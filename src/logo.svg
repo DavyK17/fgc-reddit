@@ -46,25 +46,25 @@
     <g
        id="g28194">
       <g
-         style="font-size:16.0792px;line-height:1.25;clip-rule:evenodd;fill:#cccccc;fill-opacity:1;fill-rule:evenodd;stroke-width:0.401982"
+         style="font-size:16.0792px;line-height:1.25;clip-rule:evenodd;fill:#9999ff;fill-opacity:1;fill-rule:evenodd;stroke-width:0.401982"
          id="g842"
          transform="matrix(0.46125089,0,0,0.46125089,138.63652,154.54665)">
         <path
            d="m 10.381,21.275 -6.631,-3.787 1.391,-2.384 6.631,3.787 z m 7.82,-19.68 C 16.244,0.461 14.56,-0.07 13.169,0.007 11.076,0.124 9.236,1.24 9.548,4.897 9.154,2.63 7.731,0.719 6.048,1.028 3.814,1.438 4.399,4.33 4.613,6.734 c 0.191,2.155 0.408,4.598 -0.7,6.502 L 1,18.227 11.11,24 14.017,19.016 c 1.429,-2.435 3.055,-3.631 4.63,-4.789 C 19.715,13.44 23,11.229 23,8.034 23,5.389 20.749,3.072 18.201,1.595"
            id="path833"
-           style="fill:#cccccc;fill-opacity:1" />
+           style="fill:#9999ff;fill-opacity:1" />
       </g>
       <path
          d="m -1.3597027,165.37336 h 4.1140143 v -2.83427 h 7.7255534 v -3.08551 H 2.7543116 v -1.2876 h 8.7540574 v -3.3446 H -1.3597027 Z"
-         style="font-size:16.0792px;line-height:1.25;font-family:'Akira Expanded';-inkscape-font-specification:'Akira Expanded, ';fill:#cccccc;fill-opacity:1;stroke-width:0.401983"
+         style="font-size:16.0792px;line-height:1.25;font-family:'Akira Expanded';-inkscape-font-specification:'Akira Expanded, ';fill:#9999ff;fill-opacity:1;stroke-width:0.401983"
          id="path6163" />
       <path
          d="m 19.406647,161.36926 h 3.313195 c -0.620242,0.80082 -1.656597,0.89504 -3.28179,0.89504 -1.688002,-0.0236 -3.116915,-0.3219 -3.093362,-2.05701 v -0.25909 c -0.02355,-1.71941 1.40536,-2.03345 3.093362,-2.05701 0.60454,0 1.154123,0.0628 1.640895,0.18843 0.486773,0.12562 0.863629,0.36116 1.122718,0.71446 h 4.373103 c -0.463219,-3.25039 -3.47807,-4.24749 -7.136716,-4.24749 -3.972693,0.008 -7.223078,1.15413 -7.207376,5.15037 v 0.76942 c -0.0157,3.98839 3.234683,5.13466 7.207376,5.15037 1.790067,0 3.650795,-0.43182 4.875578,-1.6409 l 0.204131,1.6409 h 2.057007 v -6.05326 h -7.168121 z"
-         style="font-size:16.0792px;line-height:1.25;font-family:'Akira Expanded';-inkscape-font-specification:'Akira Expanded, ';fill:#cccccc;fill-opacity:1;stroke-width:0.401983"
+         style="font-size:16.0792px;line-height:1.25;font-family:'Akira Expanded';-inkscape-font-specification:'Akira Expanded, ';fill:#9999ff;fill-opacity:1;stroke-width:0.401983"
          id="path6165" />
       <path
          d="m 38.029627,160.98455 c -0.376856,1.03636 -1.554532,1.2876 -2.967743,1.2876 -1.680151,-0.0236 -3.109064,-0.3376 -3.085511,-2.05701 v -0.25909 c -0.02355,-1.73511 1.40536,-2.03345 3.085511,-2.05701 1.413211,0 2.583036,0.24339 2.967743,1.27975 h 4.21608 c -0.259089,-3.55659 -3.383856,-4.62435 -7.183823,-4.6322 -3.956991,0.0157 -7.223079,1.16198 -7.207376,5.15037 v 0.76942 c -0.0157,3.99624 3.250385,5.14252 7.207376,5.15037 3.799967,0 6.924734,-1.06776 7.183823,-4.6322 z"
-         style="font-size:16.0792px;line-height:1.25;font-family:'Akira Expanded';-inkscape-font-specification:'Akira Expanded, ';fill:#cccccc;fill-opacity:1;stroke-width:0.401983"
+         style="font-size:16.0792px;line-height:1.25;font-family:'Akira Expanded';-inkscape-font-specification:'Akira Expanded, ';fill:#9999ff;fill-opacity:1;stroke-width:0.401983"
          id="path6167" />
       <path
          d="m 50.410927,154.81353 v 10.55198 h 4.114014 v -2.57519 h 3.674349 l 1.986347,2.57519 h 4.380954 l -2.300394,-2.95989 c 0.690903,-0.3219 1.248337,-0.80867 1.664449,-1.44462 0.423963,-0.64379 0.635945,-1.3661 0.635945,-2.15907 0.0314,-2.18263 -1.813621,-4.01195 -3.988396,-3.9884 z m 9.130914,3.08551 c 0.502475,0 0.902884,0.40041 0.902884,0.90289 0,0.24339 -0.08636,0.45537 -0.26694,0.63594 -0.172725,0.17273 -0.384707,0.25909 -0.635944,0.25909 h -5.0169 v -1.79792 z"
