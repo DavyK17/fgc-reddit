@@ -1,9 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/Header";
+import "./util/reset.css";
+import "./App.css";
 
 function App() {
-  return;
+  return (
+    <Header />
+  );
 }
 
 export default App;
