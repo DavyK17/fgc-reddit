@@ -4,14 +4,14 @@ let state = makeID(7);
 let code;
 
 let token;
-// let userID;
+let userID;
 
 const clientID = "6GyLIZKwo2Oo3s1FgtecFw";
 const clientSecret = "S0JhJxxfKogUviVhk0QAg5F7iQvg3w";
 
 const responseType = "code";
-const redirectURI = "https://fgc-reddit.netlify.app"
-const authDuration = "temporary";
+const redirectURI = "http://localhost:3000"
+const authDuration = "permanent";
 
 const Reddit = {
     async getAccessToken() {
@@ -22,7 +22,7 @@ const Reddit = {
 
         if (stateMatch && codeMatch) {
             state = stateMatch[1];
-            code = codeMatch[1];
+            code = codeMatch[1].match(/.*[^(#_)]/)[0];
 
             const data = new URLSearchParams({
                 grant_type: "authorization_code",
@@ -42,7 +42,14 @@ const Reddit = {
                 });
                 if (response.ok) {
                     const jsonResponse = await response.json();
-                    console.log(jsonResponse);
+                    token = jsonResponse.access_token;
+
+                    let expiryTime = Number(jsonResponse.expires_in);
+
+                    window.setTimeout(() => token = "", expiryTime * 1000);
+                    window.history.pushState("Access Token", null, "/");
+
+                    return token;
                 }
             } catch (error) {
                 console.log(error);
@@ -52,8 +59,7 @@ const Reddit = {
             const scopes = "identity vote read";
             window.location.href = `https://www.reddit.com/api/v1/authorize?client_id=${clientID}&response_type=${responseType}&state=${state}&redirect_uri=${encodeURIComponent(redirectURI)}&duration=${authDuration}&scope=${encodeURIComponent(scopes)}`;
         }
-
-    }
+    },
 
     // async getCurrentUser() {
     //     if (userID) return userID;
