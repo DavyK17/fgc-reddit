@@ -29,7 +29,6 @@ const Reddit = {
                 code: code,
                 redirect_uri: redirectURI
             });
-
             try {
                 const credentials = Buffer.from(`${clientID}:${clientSecret}`).toString("base64");
                 const url = "https://www.reddit.com/api/v1/access_token";
@@ -55,17 +54,29 @@ const Reddit = {
                 console.log(error);
             }
         } else {
-            console.log(state);
             const scopes = "identity vote read";
             window.location.href = `https://www.reddit.com/api/v1/authorize?client_id=${clientID}&response_type=${responseType}&state=${state}&redirect_uri=${encodeURIComponent(redirectURI)}&duration=${authDuration}&scope=${encodeURIComponent(scopes)}`;
         }
     },
 
-    // async getCurrentUser() {
-    //     if (userID) return userID;
+    async getCurrentUserId() {
+        if (userID) return userID;
 
-    //     const url = "https://oauth.reddit.com/api/v1/me"
-    // }
+        const token = await Reddit.getAccessToken().then(val => {
+            return val;
+        })
+        const url = "https://oauth.reddit.com/api/v1/me"
+        const headers = {
+            "Authorization": `Bearer ${token}`,
+            "User-Agent": "fgc-reddit by u/DavyK17_ (Codecademy portfolio project)",
+        };
+
+        const response = await fetch(url, { headers: headers });
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            return jsonResponse.name;
+        }
+    },
 }
 
 export default Reddit;
