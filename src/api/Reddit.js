@@ -7,6 +7,8 @@ let token;
 // let userID;
 
 const clientID = "6GyLIZKwo2Oo3s1FgtecFw";
+const clientSecret = "S0JhJxxfKogUviVhk0QAg5F7iQvg3w";
+
 const responseType = "code";
 const redirectURI = "https://fgc-reddit.netlify.app"
 const authDuration = "temporary";
@@ -22,27 +24,29 @@ const Reddit = {
             state = stateMatch[1];
             code = codeMatch[1];
 
-            console.log(state);
-            console.log(code);
+            const data = new URLSearchParams({
+                grant_type: "authorization_code",
+                code: code,
+                redirect_uri: redirectURI
+            });
 
-            // try {
-            //     const url = "https://www.reddit.com/api/v1/access_token";
-            //     const response = await fetch(url, {
-            //         headers: headers,
-            //         method: "POST",
-            //         body: JSON.stringify({
-            //             grant_type: "authorization_code",
-            //             code: code,
-            //             redirect_uri: redirectURI,
-            //         })
-            //     });
-            //     if (response.ok) {
-            //         const jsonResponse = await response.json();
-            //         console.log(jsonResponse);
-            //     }
-            // } catch (error) {
-            //     console.log(error);
-            // }
+            try {
+                const credentials = Buffer.from(`${clientID}:${clientSecret}`).toString("base64");
+                const url = "https://www.reddit.com/api/v1/access_token";
+                const headers = { Authorization: `Basic ${credentials}` };
+
+                const response = await fetch(url, {
+                    headers: headers,
+                    method: "POST",
+                    body: data
+                });
+                if (response.ok) {
+                    const jsonResponse = await response.json();
+                    console.log(jsonResponse);
+                }
+            } catch (error) {
+                console.log(error);
+            }
         } else {
             console.log(state);
             const scopes = "identity vote read";
