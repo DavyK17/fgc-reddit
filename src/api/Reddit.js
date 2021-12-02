@@ -10,7 +10,7 @@ const clientID = "6GyLIZKwo2Oo3s1FgtecFw";
 const clientSecret = "S0JhJxxfKogUviVhk0QAg5F7iQvg3w";
 
 const responseType = "code";
-const redirectURI = "http://localhost:3000"
+const redirectURI = "http://fgc-reddit.netlify.app"
 const authDuration = "permanent";
 
 const Reddit = {
