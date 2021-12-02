@@ -125,6 +125,18 @@ header>.col {
     align-items: center;
 }
 
+#reddit-username {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
+}
+
+#reddit-username:hover,
+#reddit-username:focus {
+    color: #99f;
+    transition: color 0.15s ease-in-out;
+}
+
 #top-menu {
     display: none;
     fill: #ccc;
