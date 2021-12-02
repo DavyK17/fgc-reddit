@@ -8,7 +8,7 @@ let token;
 
 const clientID = "6GyLIZKwo2Oo3s1FgtecFw";
 const responseType = "code";
-const redirectURI = "https://192.168.100.6:3000"
+const redirectURI = "https://fgc-reddit.netlify.app"
 const authDuration = "temporary";
 
 const Reddit = {
