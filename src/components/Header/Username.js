@@ -7,10 +7,7 @@ const Username = () => {
 
     const handleAuth = (e) => {
         e.preventDefault();
-        Reddit.getCurrentUserId().then(val => {
-            setUserID(val);
-            setAuthState(true);
-        })
+        Reddit.getAccessToken();
     }
 
     const stateMatch = window.location.href.match(/state=([^&]*)/);
