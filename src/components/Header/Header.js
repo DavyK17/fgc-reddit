@@ -1,12 +1,14 @@
 import React from "react";
+import icon from "../../icon.svg";
 import logo from "../../logo.svg";
-import Username from "./Username";
+import Username from "../../features/User/User";
 
 const Header = () => {
     return (
         <header>
             <div className="col logo">
-                <img src={logo} alt="FGC Reddit" />
+                <img className="mobile-only" src={icon} alt="FGC Reddit" />
+                <img className="lg-only" src={logo} alt="FGC Reddit" />
             </div>
             <div className="col search">
                 <form id="search-bar">
