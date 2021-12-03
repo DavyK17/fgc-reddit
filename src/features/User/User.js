@@ -1,11 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectUsername } from "./userSlice";
+import { selectUsername, selectAuthState } from "./userSlice";
 import Reddit from "../../api/Reddit";
 
 const Username = () => {
     const userID = useSelector(selectUsername);
-    const { authState, isLoading } = useSelector(state => state.user)
+    const authState = useSelector(selectAuthState);
+    const { isLoading } = useSelector(state => state.user)
 
     console.log(userID);
 
