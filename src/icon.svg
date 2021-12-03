@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="10.147519mm"
+   height="11.070167mm"
+   viewBox="0 0 10.147519 11.070167"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="1.0230034"
+     inkscape:cx="-186.21639"
+     inkscape:cy="98.240143"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g28194" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-139.09777,-154.5465)">
+    <g
+       id="g28194">
+      <g
+         style="font-size:16.0792px;line-height:1.25;clip-rule:evenodd;fill:#cccccc;fill-opacity:1;fill-rule:evenodd;stroke-width:0.401982"
+         id="g842"
+         transform="matrix(0.46125089,0,0,0.46125089,138.63652,154.54665)">
+        <path
+           d="m 10.381,21.275 -6.631,-3.787 1.391,-2.384 6.631,3.787 z m 7.82,-19.68 C 16.244,0.461 14.56,-0.07 13.169,0.007 11.076,0.124 9.236,1.24 9.548,4.897 9.154,2.63 7.731,0.719 6.048,1.028 3.814,1.438 4.399,4.33 4.613,6.734 c 0.191,2.155 0.408,4.598 -0.7,6.502 L 1,18.227 11.11,24 14.017,19.016 c 1.429,-2.435 3.055,-3.631 4.63,-4.789 C 19.715,13.44 23,11.229 23,8.034 23,5.389 20.749,3.072 18.201,1.595"
+           id="path833"
+           style="fill:#cccccc;fill-opacity:1" />
+      </g>
+    </g>
+  </g>
+</svg>
