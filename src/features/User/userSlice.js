@@ -26,9 +26,8 @@ export const userSlice = createSlice({
         isLoading: false,
         hasError: false,
     },
-    reducers: {},
     extraReducers: {
-        [fetchUser.pending]: (state, action) => {
+        [fetchUser.pending]: (state) => {
             state.authState = false;
             state.isLoading = true;
             state.hasError = false;
@@ -39,7 +38,7 @@ export const userSlice = createSlice({
             state.hasError = false;
             state.name = action.payload;
         },
-        [fetchUser.rejected]: (state, action) => {
+        [fetchUser.rejected]: (state) => {
             state.authState = false;
             state.isLoading = false;
             state.hasError = true;
