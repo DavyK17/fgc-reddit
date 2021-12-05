@@ -15,7 +15,7 @@ function App() {
         if (stateMatch && codeMatch) {
             dispatch(fetchUser());
         }
-    })
+    });
 
     return (
       <Header />
