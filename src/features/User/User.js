@@ -8,8 +8,6 @@ const Username = () => {
     const authState = useSelector(selectAuthState);
     const { isLoading } = useSelector(state => state.user)
 
-    console.log(userID);
-
     const handleAuth = (e) => {
         e.preventDefault();
         Reddit.getAccessToken();
