@@ -25,7 +25,7 @@ const Username = () => {
         )
     } else {
         return (
-            <a id="reddit-username" href="/" onClick={handleAuth} aria-label="Sign in">Sign in {authState}</a>
+            <a id="reddit-username" href="/" onClick={handleAuth} aria-label="Connect the web app with your Reddit account">Link with Reddit</a>
         )
     }
 }
