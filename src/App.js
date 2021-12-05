@@ -6,20 +6,20 @@ import "./util/reset.css";
 import "./App.css";
 
 function App() {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    const stateMatch = window.location.href.match(/state=([^&]*)/);
-    const codeMatch = window.location.href.match(/code=([^&]*)/);
-  
-    if (stateMatch && codeMatch) {
-      dispatch(fetchUser());
-    }
-  })
+    useEffect(() => {
+        const stateMatch = window.location.href.match(/state=([^&]*)/);
+        const codeMatch = window.location.href.match(/code=([^&]*)/);
 
-  return (
-    <Header />
-  );
+        if (stateMatch && codeMatch) {
+            dispatch(fetchUser());
+        }
+    })
+
+    return (
+      <Header />
+    );
 }
 
 export default App;
