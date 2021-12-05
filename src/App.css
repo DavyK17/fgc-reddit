@@ -124,9 +124,13 @@ header {
 }
 
 @media (max-width: 991px) {
-    header>.col {
-        flex: 0 0 calc((1/2)*100%);
-        max-width: calc((1/2)*100%);
+    header>.logo {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+    header>.userbox {
+        flex: 0 0 80%;
+        max-width: 80%;
     }
 }
 
@@ -256,6 +260,8 @@ header {
 
 #top-menu {
     display: none;
+    width: 24px;
+    height: 24px;
     fill: #ccc;
     margin-left: 0.75rem;
     cursor: pointer;
