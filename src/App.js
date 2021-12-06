@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Header from "./components/Header/Header";
+import Body from "./components/Body/Body";
 import { fetchUser } from "./features/User/userSlice";
 import "./util/reset.css";
 import "./App.css";
@@ -18,7 +19,10 @@ function App() {
     });
 
     return (
-      <Header />
+      <>
+        <Header />
+        <Body />
+      </>
     );
 }
 
