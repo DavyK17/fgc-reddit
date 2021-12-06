@@ -1,21 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectUsername, selectAuthState } from "./userSlice";
-import Reddit from "../../api/Reddit";
 
-const User = () => {
+const User = props => {
     const userID = useSelector(selectUsername);
     const authState = useSelector(selectAuthState);
     const { isLoading } = useSelector(state => state.user)
-
-    const handleAuth = (e) => {
-        e.preventDefault();
-        Reddit.getAccessToken();
-    }
+    const { handleAuth } = props;
 
     if (isLoading) {
         return (
-            <svg className="spinner" viewBox="0 0 50 50">
+            <svg className="spinner" viewBox="0 0 50 50" data-testid="loading">
               <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="5"></circle>
             </svg>
         )
