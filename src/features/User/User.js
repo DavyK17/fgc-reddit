@@ -1,17 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectUsername, selectAuthState } from "./userSlice";
-import Reddit from "../../api/Reddit";
 
-const User = () => {
+const User = props => {
     const userID = useSelector(selectUsername);
     const authState = useSelector(selectAuthState);
     const { isLoading } = useSelector(state => state.user)
-
-    const handleAuth = (e) => {
-        e.preventDefault();
-        Reddit.getAccessToken();
-    }
+    const { handleAuth } = props;
 
     if (isLoading) {
         return (
