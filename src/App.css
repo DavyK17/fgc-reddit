@@ -552,7 +552,7 @@ header {
         height: 100%;
         top: 0;
         bottom: 0;
-        right: 0;
+        right: -100%;
         padding: unset;
         overflow-y: scroll;
         z-index: 100;
