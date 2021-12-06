@@ -3,6 +3,7 @@ import $ from "jquery";
 import icon from "../../icon.svg";
 import logo from "../../logo.svg";
 import User from "../../features/User/User";
+import Reddit from "../../api/Reddit";
 
 const Header = () => {
     const openSidebar = () => {
@@ -10,6 +11,11 @@ const Header = () => {
             right: "0",
         }, 500);
     };
+
+    const handleAuth = (e) => {
+        e.preventDefault();
+        Reddit.getAccessToken();
+    }
 
     return (
         <header>
@@ -24,7 +30,7 @@ const Header = () => {
                 </form>
             </div>
             <div className="col userbox">
-                <User />
+                <User handleAuth={handleAuth} />
                 <svg id="top-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" onClick={openSidebar}>
                     <path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/>
                 </svg>
