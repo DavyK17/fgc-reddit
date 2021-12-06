@@ -27,10 +27,10 @@ test("sets loading state to 'true' when fetchUser is pending", () => {
 });
 
 test("sets authentication state to 'true' and updates username when fetchUser is fulfilled", () => {
-    const action = { type: fetchUser.fulfilled.type, payload: "DavyK17" };
+    const action = { type: fetchUser.fulfilled.type, payload: "User" };
     const state = userReducer(initialState, action);
     const expected = {
-        name: "DavyK17",
+        name: "User",
         authState: true,
         isLoading: false,
         hasError: false,
