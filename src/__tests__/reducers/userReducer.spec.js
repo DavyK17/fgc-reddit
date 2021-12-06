@@ -1,11 +1,12 @@
+import Immutable from "seamless-immutable";
 import userReducer, { fetchUser } from "../../features/User/userSlice";
 
-const initialState = {
+const initialState = Immutable({
     name: "",
     authState: false,
     isLoading: false,
     hasError: false
-};
+});
 
 test("has a default state", () => {
     const action = { type: "undefined" };
@@ -16,12 +17,12 @@ test("has a default state", () => {
 test("sets loading state to 'true' when fetchUser is pending", () => {
     const action = { type: fetchUser.pending.type };
     const state = userReducer(initialState, action);
-    const expected = {
+    const expected = Immutable({
         name: "",
         authState: false,
         isLoading: true,
         hasError: false,
-    };
+    });
 
     expect(state).toEqual(expected);
 });
@@ -29,12 +30,12 @@ test("sets loading state to 'true' when fetchUser is pending", () => {
 test("sets authentication state to 'true' and updates username when fetchUser is fulfilled", () => {
     const action = { type: fetchUser.fulfilled.type, payload: "User" };
     const state = userReducer(initialState, action);
-    const expected = {
+    const expected = Immutable({
         name: "User",
         authState: true,
         isLoading: false,
         hasError: false,
-    };
+    });
 
     expect(state).toEqual(expected);
 });
@@ -42,12 +43,12 @@ test("sets authentication state to 'true' and updates username when fetchUser is
 test("sets error state to 'true' when fetchUser is rejected", () => {
     const action = { type: fetchUser.rejected.type };
     const state = userReducer(initialState, action);
-    const expected = {
+    const expected = Immutable({
         name: "",
         authState: false,
         isLoading: false,
         hasError: true,
-    };
+    });
 
     expect(state).toEqual(expected);
 });
