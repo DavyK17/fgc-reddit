@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { selectUsername, selectAuthState } from "./userSlice";
 import Reddit from "../../api/Reddit";
 
-const Username = () => {
+const User = () => {
     const userID = useSelector(selectUsername);
     const authState = useSelector(selectAuthState);
     const { isLoading } = useSelector(state => state.user)
@@ -30,4 +30,4 @@ const Username = () => {
     }
 }
 
-export default Username;
+export default User;
