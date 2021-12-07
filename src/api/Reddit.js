@@ -56,6 +56,28 @@ const Reddit = {
             window.location.href = `https://www.reddit.com/api/v1/authorize?client_id=${clientID}&response_type=${responseType}&state=${state}&redirect_uri=${encodeURIComponent(redirectURI)}&duration=${authDuration}&scope=${encodeURIComponent(scopes)}`;
         }
     },
+
+    async getUser() {
+        const token = await Reddit.getAccessToken().then(val => {
+            return val;
+        })
+
+        try {    
+            const url = "https://oauth.reddit.com/api/v1/me"
+            const headers = {
+                "Authorization": `Bearer ${token}`,
+                "User-Agent": "fgc-reddit by u/DavyK17_ (Codecademy portfolio project)",
+            };
+    
+            const response = await fetch(url, { headers: headers });
+            if (response.ok) {
+                const jsonResponse = await response.json();
+                return jsonResponse.name;
+            }
+        } catch(error) {
+            console.log(error);
+        }
+    },
 }
 
 export default Reddit;
