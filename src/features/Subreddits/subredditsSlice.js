@@ -47,7 +47,7 @@ export const subredditsSlice = createSlice({
         subs: [],
         isLoading: false,
         hasError: false,
-        active: "",
+        active: {},
     },
     reducers: {
         setActive: (state, action) => {
