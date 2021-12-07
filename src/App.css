@@ -667,7 +667,7 @@ header {
     background-color: rgba(0, 0, 0, 0.15);
 }
 
-.subreddit-selected button {
+.subreddit-selected {
     background-color: var(--darkgray) !important;
     color: var(--gray) !important;
     border-right: 10px solid white;
