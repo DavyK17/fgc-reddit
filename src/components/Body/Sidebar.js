@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import $ from "jquery";
 
 import { setActive } from "../../features/Subreddits/subredditsSlice";
-import SubredditList from "./SubredditList";
+import SubredditList from "../../features/Subreddits/SubredditList";
 
 const Sidebar = () => {
     const dispatch = useDispatch();

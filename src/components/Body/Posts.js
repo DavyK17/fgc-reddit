@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import Post from "./Post";
+import Post from "../../features/Posts/Post";
 import { selectActive } from "../../features/Subreddits/subredditsSlice";
 
 const Posts = () => {
