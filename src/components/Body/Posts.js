@@ -1,7 +1,7 @@
 import React from "react";
 
-const Subs = () => {
+const Posts = () => {
     return;
 }
 
-export default Subs;
+export default Posts;
