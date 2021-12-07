@@ -16,11 +16,12 @@ const SubredditList = props => {
 
     const handleSelect = ({ target }) => {
         if (active) {
-            $(`#${active}`).removeClass("subreddit-selected");
+            $(`#${active.name}`).removeClass("subreddit-selected");
         }
-
         $(`#${target.id}`).addClass("subreddit-selected");
-        handleActive(target.id);
+
+        const selected = subs.filter(sub => sub.name === target.id)[0];
+        handleActive(selected);
     }
 
     if (isLoading) {
@@ -79,7 +80,7 @@ const SubredditList = props => {
                         }
 
                         const selectedStyle = () => {
-                            if (active === s.name) {
+                            if (active.name === s.name) {
                                 return {
                                     borderRight: `10px solid ${s.key_color}`,
                                 }
