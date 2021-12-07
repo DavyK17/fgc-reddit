@@ -6,7 +6,7 @@ import "../../util/skeleton.css";
 import { useSelector } from "react-redux";
 import { selectSubreddits, selectActive } from "../../features/Subreddits/subredditsSlice";
 
-import gamingIcon from "../../gaming.png";
+import gamingIcon from "../../img/gaming.png";
 
 const SubredditList = props => {
     const subs = useSelector(selectSubreddits);

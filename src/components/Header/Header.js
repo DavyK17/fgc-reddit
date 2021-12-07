@@ -2,8 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 
 import $ from "jquery";
-import icon from "../../icon.svg";
-import logo from "../../logo.svg";
+import icon from "../../img/icon.svg";
+import logo from "../../img/logo.svg";
 
 import User from "../../features/User/User";
 import { fetchUser } from "../../features/User/userSlice";
