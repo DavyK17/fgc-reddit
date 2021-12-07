@@ -12,6 +12,7 @@ const subsList = [ // Subreddit display names without "r/"
     "killerinstinct",
     "kof",
     "MortalKombat",
+    "Project_L",
     "SamuraiShodown",
     "Skullgirls",
     "SoulCalibur",
