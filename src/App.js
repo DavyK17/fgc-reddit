@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+
+import "./util/reset.css";
+import "./App.css";
+
 import Header from "./components/Header/Header";
 import Body from "./components/Body/Body";
 import { fetchUser } from "./features/User/userSlice";
-import "./util/reset.css";
-import "./App.css";
+// import { fetchSubs } from "./features/Subreddits/subredditsSlice";
 
 function App() {
     const dispatch = useDispatch();
@@ -13,16 +16,17 @@ function App() {
         const stateMatch = window.location.href.match(/state=([^&]*)/);
         const codeMatch = window.location.href.match(/code=([^&]*)/);
 
-        if (stateMatch && codeMatch) {
+        if ((stateMatch && codeMatch) || localStorage.getItem("access_token")) {
             dispatch(fetchUser());
+            // dispatch(fetchSubs());
         }
     });
 
     return (
-      <>
-        <Header />
-        <Body />
-      </>
+        <>
+            <Header />
+            <Body />
+        </>
     );
 }
 
