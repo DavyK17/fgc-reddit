@@ -1,11 +1,11 @@
 import React from "react";
-// import Subs from "./Subs";
+import Posts from "./Posts";
 import Sidebar from "./Sidebar";
 
 const Body = () => {
     return (
       <section className="reddit">
-          {/* <Subs /> */}
+          <Posts />
           <Sidebar />
       </section>
     );
