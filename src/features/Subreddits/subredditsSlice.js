@@ -11,6 +11,8 @@ const subsList = [ // Subreddit display names without "r/"
     "INJUSTICE",
     "killerinstinct",
     "kof",
+    "marvelvscapcom",
+    "meltyblood",
     "MortalKombat",
     "Project_L",
     "SamuraiShodown",
