@@ -10,7 +10,7 @@ import { fetchUser } from "../../features/User/userSlice";
 
 const Header = () => {
     const dispatch = useDispatch();
-
+    
     const openSidebar = () => {
         $(".sidebar").animate({
             right: "0",
@@ -20,7 +20,7 @@ const Header = () => {
     const handleAuth = (e) => {
         e.preventDefault();
         dispatch(fetchUser());
-    }
+    };
 
     return (
         <header>
