@@ -4,7 +4,7 @@ import $ from "jquery";
 import "../../util/skeleton.css";
 
 import { useSelector } from "react-redux";
-import { selectSubreddits, selectActive } from "../../features/Subreddits/subredditsSlice";
+import { selectSubreddits, selectActive } from "./subredditsSlice";
 
 import gamingIcon from "../../img/gaming.png";
 
