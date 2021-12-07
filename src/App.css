@@ -644,6 +644,14 @@ header {
     list-style-type: none;
 }
 
+@media (min-width: 992px) {
+    .subreddit-list {
+        min-height: 30px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+}
+
 .subreddit-icon {
     height: 25px;
     width: 25px;
