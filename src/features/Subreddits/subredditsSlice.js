@@ -46,6 +46,12 @@ export const subredditsSlice = createSlice({
         subs: [],
         isLoading: false,
         hasError: false,
+        active: "",
+    },
+    reducers: {
+        setActive: (state, action) => {
+            state.active = action.payload;
+        },
     },
     extraReducers: {
         [fetchSubs.pending]: (state) => {
@@ -65,4 +71,6 @@ export const subredditsSlice = createSlice({
 })
 
 export const selectSubreddits = state => state.subreddits.subs;
+export const selectActive = state => state.subreddits.active;
+export const { setActive } = subredditsSlice.actions;
 export default subredditsSlice.reducer;
