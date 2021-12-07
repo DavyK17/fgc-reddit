@@ -1,9 +1,16 @@
 import React from "react";
-
+import { useDispatch } from "react-redux";
 import $ from "jquery";
+
+import { setActive } from "../../features/Subreddits/subredditsSlice";
 import SubredditList from "./SubredditList";
 
 const Sidebar = () => {
+    const dispatch = useDispatch();
+    const handleActive = id => {
+        dispatch(setActive(id));
+    }
+
     const closeSidebar = () => {
         $(".sidebar").animate({
             right: `-100%`,
@@ -26,7 +33,7 @@ const Sidebar = () => {
                             <button type="submit">Search</button>
                         </form>
                     </div>
-                    <SubredditList />
+                    <SubredditList handleActive={handleActive} />
                 </div>
                 <div className="credits">
                     <p>Web app built by <a href="https://davyk17.github.io/" target="_blank" rel="noreferrer">Davy Kamanzi</a></p>
