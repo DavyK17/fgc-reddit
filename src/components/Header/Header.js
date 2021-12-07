@@ -1,11 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+
 import $ from "jquery";
 import icon from "../../icon.svg";
 import logo from "../../logo.svg";
+
 import User from "../../features/User/User";
-import Reddit from "../../api/Reddit";
+import { fetchUser } from "../../features/User/userSlice";
 
 const Header = () => {
+    const dispatch = useDispatch();
+
     const openSidebar = () => {
         $(".sidebar").animate({
             right: "0",
@@ -14,7 +19,7 @@ const Header = () => {
 
     const handleAuth = (e) => {
         e.preventDefault();
-        Reddit.getAccessToken();
+        dispatch(fetchUser());
     }
 
     return (
