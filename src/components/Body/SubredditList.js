@@ -1,15 +1,27 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
+import $ from "jquery";
 import "../../util/skeleton.css";
 
 import { useSelector } from "react-redux";
-import { selectSubreddits } from "../../features/Subreddits/subredditsSlice";
+import { selectSubreddits, selectActive } from "../../features/Subreddits/subredditsSlice";
 
 import gamingIcon from "../../gaming.png";
 
-const SubredditList = () => {
+const SubredditList = props => {
     const subs = useSelector(selectSubreddits);
-    const { isLoading, hasError } = useSelector(state => state.subreddits)
+    const active = useSelector(selectActive);
+    const { isLoading, hasError } = useSelector(state => state.subreddits);
+    const { handleActive } = props;
+
+    const handleSelect = ({ target }) => {
+        if (active) {
+            $(`#${active}`).removeClass("subreddit-selected");
+        }
+
+        $(`#${target.id}`).addClass("subreddit-selected");
+        handleActive(target.id);
+    }
 
     if (isLoading) {
         return (
@@ -51,12 +63,10 @@ const SubredditList = () => {
                 {
                     subs.map((s, i) => {
                         if (!s) return null;
+
                         const iconStyle = {
                             border: `2px solid ${s.key_color}`,
                         }
-                        // const selectedStyle = {
-                        //     borderRight: `10px solid ${s.key_color}`,
-                        // }
                         const getIconSrc = () => {
                             if (!s.community_icon) {
                                 if (!s.icon_img) {
@@ -67,10 +77,18 @@ const SubredditList = () => {
                             const iconSrc = s.community_icon.match(/((.*png)|(.*jpg))/g);
                             return iconSrc;
                         }
+
+                        const selectedStyle = () => {
+                            if (active === s.name) {
+                                return {
+                                    borderRight: `10px solid ${s.key_color}`,
+                                }
+                            }
+                        }
+
                         return (
                             <li key={i}>
-                                <button>
-                                {/* <button style={selectedStyle}> */}
+                                <button id={s.name} onClick={handleSelect} style={selectedStyle()}>
                                     <img className="subreddit-icon" src={getIconSrc()} alt="" style={iconStyle} />
                                     {s.display_name}
                                 </button>
