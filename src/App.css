@@ -648,7 +648,7 @@ header {
     height: 25px;
     width: 25px;
     border-radius: 50px;
-    border: 3px solid black;
+    border: 2px solid black;
     margin-right: 0.625rem;
 }
 
@@ -670,7 +670,7 @@ header {
 .subreddit-selected button {
     background-color: var(--darkgray) !important;
     color: var(--gray) !important;
-    border-right: 10px solid orange;
+    border-right: 10px solid white;
 }
 
 .credits {
