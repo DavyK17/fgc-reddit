@@ -26,12 +26,6 @@ const Sidebar = () => {
                             <button type="submit">Search</button>
                         </form>
                     </div>
-                    <ul className="subreddit-filters">
-                        <li id="subreddit-hot">Hot</li>
-                        <li id="subreddit-new">New</li>
-                        <li id="subreddit-top">Top</li>
-                        <li id="subreddit-rising">Rising</li>
-                    </ul>
                     <SubredditList />
                 </div>
                 <div className="credits">

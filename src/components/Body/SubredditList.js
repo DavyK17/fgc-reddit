@@ -40,43 +40,46 @@ const SubredditList = () => {
     }
     
     return (
-        <ul className="subreddit-list">
-            {
-                subs.map((s, i) => {
-                    if (!s) return null;
-
-                    const iconStyle = {
-                        border: `2px solid ${s.key_color}`,
-                    }
-                    // const selectedStyle = {
-                    //     borderRight: `10px solid ${s.key_color}`,
-                    // }
-
-
-                    const getIconSrc = () => {
-                        if (!s.community_icon) {
-                            if (!s.icon_img) {
-                                return gamingIcon;
-                            }
-                            return s.icon_img;
+        <>
+            <ul className="subreddit-filters">
+                <li id="subreddit-hot">Hot</li>
+                <li id="subreddit-new">New</li>
+                <li id="subreddit-top">Top</li>
+                <li id="subreddit-rising">Rising</li>
+            </ul>
+            <ul className="subreddit-list">
+                {
+                    subs.map((s, i) => {
+                        if (!s) return null;
+                        const iconStyle = {
+                            border: `2px solid ${s.key_color}`,
                         }
-
-                        const iconSrc = s.community_icon.match(/((.*png)|(.*jpg))/g);
-                        return iconSrc;
-                    }
-
-                    return (
-                        <li key={i}>
-                            <button>
-                            {/* <button style={selectedStyle}> */}
-                                <img className="subreddit-icon" src={getIconSrc()} alt="" style={iconStyle} />
-                                {s.display_name}
-                            </button>
-                        </li>
-                    )
-                })
-            }
-        </ul>
+                        // const selectedStyle = {
+                        //     borderRight: `10px solid ${s.key_color}`,
+                        // }
+                        const getIconSrc = () => {
+                            if (!s.community_icon) {
+                                if (!s.icon_img) {
+                                    return gamingIcon;
+                                }
+                                return s.icon_img;
+                            }
+                            const iconSrc = s.community_icon.match(/((.*png)|(.*jpg))/g);
+                            return iconSrc;
+                        }
+                        return (
+                            <li key={i}>
+                                <button>
+                                {/* <button style={selectedStyle}> */}
+                                    <img className="subreddit-icon" src={getIconSrc()} alt="" style={iconStyle} />
+                                    {s.display_name}
+                                </button>
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        </>
     )
 }
 
