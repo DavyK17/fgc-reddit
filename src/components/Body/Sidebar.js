@@ -1,7 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import $ from "jquery";
 
+import { setActive } from "../../features/Subreddits/subredditsSlice";
+import SubredditList from "../../features/Subreddits/SubredditList";
+
 const Sidebar = () => {
+    const dispatch = useDispatch();
+    const handleActive = id => {
+        dispatch(setActive(id));
+    }
+
     const closeSidebar = () => {
         $(".sidebar").animate({
             right: `-100%`,
@@ -24,43 +33,7 @@ const Sidebar = () => {
                             <button type="submit">Search</button>
                         </form>
                     </div>
-                    <ul className="subreddit-filters">
-                        <li id="subreddit-hot">Hot</li>
-                        <li id="subreddit-new">New</li>
-                        <li id="subreddit-top">Top</li>
-                        <li id="subreddit-rising">Rising</li>
-                    </ul>
-                    <ul className="subreddit-list">
-                        <li>
-                            <button>
-                                All subreddits
-                            </button>
-                        </li>
-                        <li className="subreddit-selected">
-                            <button>
-                                <img className="subreddit-icon" src="gaming.png" alt="" />
-                                Brawlhalla
-                            </button>
-                        </li>
-                        <li>
-                            <button>
-                                <img className="subreddit-icon" src="gaming.png" alt="" />
-                                Dead or Alive
-                            </button>
-                        </li>
-                        <li>
-                            <button>
-                                <img className="subreddit-icon" src="gaming.png" alt="" />
-                                Dragon Ball FighterZ
-                            </button>
-                        </li>
-                        <li>
-                            <button>
-                                <img className="subreddit-icon" src="gaming.png" alt="" />
-                                Guilty Gear
-                            </button>
-                        </li>
-                    </ul>
+                    <SubredditList handleActive={handleActive} />
                 </div>
                 <div className="credits">
                     <p>Web app built by <a href="https://davyk17.github.io/" target="_blank" rel="noreferrer">Davy Kamanzi</a></p>

@@ -57,3 +57,17 @@ test("displays user's Reddit username when authentication is fulfilled", () => {
 
     expect(screen.getByText("User")).toBeInTheDocument(); 
 });
+
+test("renders Reddit authentication link when authentication is rejected", () => {
+    render(
+        <Provider store={store}>
+            <User />
+        </Provider>
+    );
+    const authMock = () => {
+        return { type: fetchUser.rejected.type }
+    }
+    store.dispatch(authMock());
+
+    expect(screen.getByText("Link with Reddit")).toBeInTheDocument();
+});
