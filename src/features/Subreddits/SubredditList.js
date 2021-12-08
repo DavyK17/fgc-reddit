@@ -37,7 +37,7 @@ const SubredditList = props => {
         return (
             <ul className="subreddit-list">
                 <li>
-                    <p style={{ fontSize: "1.25rem", color: "rgba(26, 26, 26, 0.75)" }}>An error has occurred. Kindly try again.</p>
+                    <p className="placeholder" style={{ fontSize: "1.25rem", color: "rgba(26, 26, 26, 0.75)" }}>An error has occurred. Kindly try again.</p>
                 </li>
             </ul>
         )
@@ -46,7 +46,7 @@ const SubredditList = props => {
         return (
             <ul className="subreddit-list">
                 <li>
-                    <p style={{ fontSize: "1.25rem", color: "rgba(26, 26, 26, 0.75)" }}>Link with Reddit to view list</p>
+                    <p className="placeholder" style={{ fontSize: "1.25rem", color: "rgba(26, 26, 26, 0.75)" }}>Link with Reddit to view list</p>
                 </li>
             </ul>
         )
