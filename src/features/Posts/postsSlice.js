@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Reddit from "../../api/Reddit";
 
-export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (name, filter = "hot") => {
+export const fetchPosts = createAsyncThunk("posts/fetchPosts", async ({ name, filter }) => {
     const data = await Reddit.getPosts(name, filter).then(val => {
         return val;
     });
