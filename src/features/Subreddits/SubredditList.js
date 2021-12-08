@@ -28,7 +28,7 @@ const SubredditList = props => {
         return (
             <ul className="subreddit-list">
                 <li>
-                    <Skeleton />
+                    <Skeleton containerTestId="subreddit-list-loading" />
                 </li>
             </ul>
         )
