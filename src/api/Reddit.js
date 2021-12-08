@@ -115,7 +115,7 @@ const Reddit = {
             const response = await fetch(url, { headers: headers });
             if (response.ok) {
                 const jsonResponse = await response.json();
-                return jsonResponse;
+                return jsonResponse.data.children;
             }
         } catch(error) {
             console.log(error);
