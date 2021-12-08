@@ -40,13 +40,20 @@ h3 {
     font-size: 1.25rem;
 }
 
+p {
+    line-height: 1.25 !important;
+}
+
 p:not(:last-of-type) {
     margin: 1rem 0;
 }
 
+p:first-of-type {
+    margin-top: unset;
+}
+
 a {
     color: #1a1a1a;
-    text-decoration: none;
     transition: color 0.15s ease-in-out;
 }
 
@@ -442,6 +449,7 @@ header {
 
 .author-name {
     font-weight: 400;
+    text-decoration: none;
 }
 
 @media (min-width: 992px) {
@@ -453,6 +461,7 @@ header {
 
 .post-time {
     text-align: right;
+    text-decoration: none;
     margin-left: 0.5rem;
     opacity: 0.75;
 }
@@ -489,15 +498,22 @@ header {
     height: 100%;
 }
 
+.post-text-container {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
 .post-comments-container {
     margin-top: 1rem;
-    padding: 1rem 0;
+    padding-top: 1rem;
     border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .post-comments-container.showing-comments {
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
     margin-bottom: 1rem;
+    padding-top: unset;
+    padding: 1rem 0;
 }
 
 .comments-button {
