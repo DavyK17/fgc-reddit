@@ -99,6 +99,28 @@ const Reddit = {
             console.log(error);
         }
     },
+
+    async getPosts(name, filter = "hot") {
+        const token = await Reddit.getAccessToken().then(val => {
+            return val;
+        });
+
+        try {
+            const url = `https://oauth.reddit.com/r/${name}/${filter}`
+            const headers = {
+                "Authorization": `Bearer ${token}`,
+                "User-Agent": "fgc-reddit by u/DavyK17_ (Codecademy portfolio project)",
+            };
+        
+            const response = await fetch(url, { headers: headers });
+            if (response.ok) {
+                const jsonResponse = await response.json();
+                return jsonResponse;
+            }
+        } catch(error) {
+            console.log(error);
+        }
+    },
 }
 
 export default Reddit;
