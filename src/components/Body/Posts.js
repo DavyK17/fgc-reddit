@@ -1,11 +1,19 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import Post from "../../features/Posts/Post";
+import { fetchPosts } from "../../features/Posts/postsSlice";
 import { selectActive } from "../../features/Subreddits/subredditsSlice";
 
 const Posts = () => {
+    const dispatch = useDispatch();
     const activeSub = useSelector(selectActive);
+
+    useEffect(() => {
+        if (activeSub.display_name) {
+            dispatch(fetchPosts({ name: activeSub.display_name }));
+        }
+    }, [dispatch, activeSub.display_name])
     
     return (
         <main>
