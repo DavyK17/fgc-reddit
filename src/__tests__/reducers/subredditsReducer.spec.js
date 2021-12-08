@@ -54,7 +54,7 @@ test("sets error state to 'true' when fetchSubs is rejected", () => {
     expect(state).toEqual(expected);
 });
 
-test("populates active object when setActive is called", () => {
+test("populates active object in state when setActive is called", () => {
     const activeMock = { id: 1 };
     const action = { type: setActive.type, payload: activeMock };
     const state = subredditsReducer(initialState, action);
