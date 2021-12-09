@@ -1,4 +1,5 @@
 import makeID from "../util/randomString";
+import checkNested from "../util/checkNested";
 
 let state = makeID(7);
 let code;
@@ -115,7 +116,8 @@ const Reddit = {
             const response = await fetch(url, { headers: headers });
             if (response.ok) {
                 const jsonResponse = await response.json();
-                return jsonResponse.data.children.map(e => e.data);
+                const fetched = jsonResponse.data.children.map(e => e.data);
+                return fetched.filter(el => !el.is_gallery && !checkNested(el, "secure_media_embed", "content"));
             }
         } catch(error) {
             console.log(error);
