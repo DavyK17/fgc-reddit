@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import "../../util/skeleton.css";
 
 import { selectPosts } from "../../features/Posts/postsSlice";
-import Comments from "./Comments";
+import Comments from "../Comments/Comments";
 import epochFromNow from "../../util/epochFromNow";
 
 const Post = props => {
