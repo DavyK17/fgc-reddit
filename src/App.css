@@ -347,7 +347,9 @@ header {
 /* Post */
 
 .post-container {
-    display: flex;
+    display: grid;
+    grid-template: auto / minmax(max-content, 38px) 1fr;
+    grid-template-areas: "vote content";
     background-color: rgba(255, 255, 255, 0.85);
     padding: 1rem;
     border-radius: 5px;
@@ -384,8 +386,10 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 38px;
     padding: 1rem 0;
     margin-right: 1rem;
+    grid-area: vote;
 }
 
 .vote-button {
@@ -406,8 +410,8 @@ header {
 }
 
 .post-content-container {
-    flex: 1;
     margin-right: 2.5rem;
+    grid-area: content;
 }
 
 @media (max-width: 991px) {
