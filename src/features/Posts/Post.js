@@ -48,6 +48,10 @@ const Post = props => {
             )
         }
     }
+    const displayScore = () => {
+        if (props.hide_score) return "Vote";
+        return props.score;
+    }
 
     const toggleComments = ({ target }) => {
         const container = $(target).parents(".post-comments-container");
@@ -115,7 +119,7 @@ const Post = props => {
                 <button type="button" className="vote-button up-vote" aria-label="Up vote">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z"/></svg>
                 </button>
-                <span className="votes-count">{props.score}</span>
+                <span className="votes-count">{displayScore()}</span>
                 <button type="button" className="vote-button down-vote" aria-label="Down vote">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"/></svg>
                 </button>
@@ -126,8 +130,7 @@ const Post = props => {
                         {/* <img className="author-img" src="gaming.png" alt="Post author" /> */}
                         <a className="author-name" href={`https://www.reddit.com/user/${props.author}`} target="_blank" rel="noreferrer">{props.author}</a>
                     </div>
-                    <a className="post-time mobile-only" href={props.permalink} target="_blank" rel="noreferrer">{epochFromNow(props.created)}</a>
-                    <a className="post-time lg-only" href={props.permalink} target="_blank" rel="noreferrer">{epochFromNow(props.created)}</a>
+                    <a className="post-time" href={props.permalink} target="_blank" rel="noreferrer">{epochFromNow(props.created)}</a>
                 </div>
                 <h3 className="post-title">{props.title}</h3>
                 {displayContent()}
