@@ -20,6 +20,23 @@ const Post = props => {
                 <div className="post-text-container" id={`text-${props.id}`}></div>
             )
         }
+        if (props.post_hint === "image" || props.url_overridden_by_dest) {
+            if (props.url.match(/v\.redd\.it/)) {
+                return (
+                    <div className="post-image-container" id={`media-${props.id}`}>
+                        <video className="post-image" controls>
+                            <source src={`${props.secure_media.reddit_video.fallback_url}`} type="video/mp4" />
+                        </video>
+                    </div>
+                )
+            }
+
+            return (
+                <div className="post-image-container" id={`media-${props.id}`}>
+                    <img src={`${props.url || props.url_overridden_by_dest}`} className="post-image" alt={`${props.title}`} />
+                </div>
+            )
+        }
         if (props.is_video) {
             return (
                 <div className="post-image-container" id={`media-${props.id}`}>
@@ -29,12 +46,6 @@ const Post = props => {
                 </div>
             )
         }
-        
-        return (
-            <div className="post-image-container" id={`media-${props.id}`}>
-                <img src={`${props.url}`} className="post-image" alt={`${props.title}`} />
-            </div>
-        )
     }
 
     const processHTML = (id, html) => {
