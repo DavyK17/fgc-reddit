@@ -5,6 +5,7 @@ import "../../util/skeleton.css";
 
 import { useSelector } from "react-redux";
 import { selectSubreddits, selectActive } from "./subredditsSlice";
+import { selectFilter } from "../Posts/postsSlice";
 
 import gamingIcon from "../../img/gaming.png";
 
@@ -12,7 +13,7 @@ const SubredditList = props => {
     const subs = useSelector(selectSubreddits);
     const active = useSelector(selectActive);
     const { isLoading, hasError } = useSelector(state => state.subreddits);
-    const { handleActive } = props;
+    const { handleActive, handleFilter } = props;
 
     const handleSelect = ({ target }) => {
         if (active) {
@@ -22,6 +23,23 @@ const SubredditList = props => {
 
         const selected = subs.filter(sub => sub.name === target.id)[0];
         handleActive(selected);
+    }
+    const switchFilter = ({ target }) => {
+        const filter = target.id.match(/(?<=(subreddit-))(.*)/)[0];
+        handleFilter(filter);
+    }
+
+    const displayFilters = () => {
+        if (Object.keys(active).length !== 0) {
+            return (
+                <ul className="subreddit-filters">
+                    <li id="subreddit-hot" onClick={switchFilter}>Hot</li>
+                    <li id="subreddit-new" onClick={switchFilter}>New</li>
+                    <li id="subreddit-top" onClick={switchFilter}>Top</li>
+                    <li id="subreddit-rising" onClick={switchFilter}>Rising</li>
+                </ul>
+            )
+        }
     }
 
     if (isLoading) {
@@ -54,12 +72,7 @@ const SubredditList = props => {
     
     return (
         <>
-            <ul className="subreddit-filters">
-                <li id="subreddit-hot">Hot</li>
-                <li id="subreddit-new">New</li>
-                <li id="subreddit-top">Top</li>
-                <li id="subreddit-rising">Rising</li>
-            </ul>
+            {displayFilters()}
             <ul className="subreddit-list">
                 {
                     subs.map((s, i) => {

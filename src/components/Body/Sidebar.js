@@ -4,11 +4,15 @@ import $ from "jquery";
 
 import { setActive } from "../../features/Subreddits/subredditsSlice";
 import SubredditList from "../../features/Subreddits/SubredditList";
+import { setFilter } from "../../features/Posts/postsSlice";
 
 const Sidebar = () => {
     const dispatch = useDispatch();
     const handleActive = id => {
         dispatch(setActive(id));
+    }
+    const handleFilter = filter => {
+        dispatch(setFilter(filter));
     }
 
     const closeSidebar = () => {
@@ -33,7 +37,7 @@ const Sidebar = () => {
                             <button type="submit">Search</button>
                         </form>
                     </div>
-                    <SubredditList handleActive={handleActive} />
+                    <SubredditList handleActive={handleActive} handleFilter={handleFilter} />
                 </div>
                 <div className="credits">
                     <p>Web app built by <a href="https://davyk17.github.io/" target="_blank" rel="noreferrer">Davy Kamanzi</a></p>
