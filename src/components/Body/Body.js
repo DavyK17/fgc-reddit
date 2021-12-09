@@ -9,7 +9,7 @@ const Body = () => {
                 <Posts />
             </main>
             <Sidebar />
-      </section>
+        </section>
     );
 }
 
