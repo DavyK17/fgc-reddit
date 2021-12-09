@@ -477,19 +477,22 @@ header {
     justify-content: center;
 }
 
-.post-image-container img {
+.post-image-container img,
+.post-image-container video {
     max-width: 100%;
     height: auto;
 }
 
 @media (min-width: 992px) {
-    .post-image-container img {
+    .post-image-container img,
+    .post-image-container video {
         max-height: 300px;
     }
 }
 
 @media (min-width: 1200px) {
-    .post-image-container img {
+    .post-image-container img,
+    .post-image-container video {
         max-height: 500px;
     }
 }
