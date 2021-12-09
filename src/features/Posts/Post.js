@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import $ from "jquery";
 
 import Skeleton from "react-loading-skeleton";
 import "../../util/skeleton.css";
@@ -45,6 +46,18 @@ const Post = props => {
                     </video>
                 </div>
             )
+        }
+    }
+
+    const toggleComments = ({ target }) => {
+        const container = $(target).parents(".post-comments-container");
+        container.toggleClass("showing-comments");
+
+        const comments = container.nextAll(".comment");
+        if (container.hasClass("showing-comments")) {
+            comments.show();
+        } else {
+            comments.hide();
         }
     }
 
@@ -118,7 +131,7 @@ const Post = props => {
                 </div>
                 <h3 className="post-title">{props.title}</h3>
                 {displayContent()}
-                <Comments num_comments={props.num_comments} />
+                <Comments num_comments={props.num_comments} id={props.id} handleClick={toggleComments} />
             </div>
         </div>
     )
