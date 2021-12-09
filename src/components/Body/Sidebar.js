@@ -10,6 +10,7 @@ const Sidebar = () => {
     const dispatch = useDispatch();
     const handleActive = id => {
         dispatch(setActive(id));
+        dispatch(setFilter("hot"));
     }
     const handleFilter = filter => {
         dispatch(setFilter(filter));
