@@ -117,7 +117,7 @@ const Reddit = {
             if (response.ok) {
                 const jsonResponse = await response.json();
                 const fetched = jsonResponse.data.children.map(e => e.data);
-                return fetched.filter(el => !el.is_gallery && !checkNested(el, "secure_media_embed", "content"));
+                return fetched.filter(el => !el.is_gallery && el.post_hint !== "link" && !checkNested(el, "secure_media_embed", "content"));
             }
         } catch(error) {
             console.log(error);
