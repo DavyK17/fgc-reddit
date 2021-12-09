@@ -46,7 +46,7 @@ const Posts = () => {
             {
                 posts.map((s, i) => {
                     return (
-                        <Post key={i} score={s.score} author={s.author} title={s.title} num_comments={s.num_comments} />
+                        <Post key={i} id={s.id} url={s.url} permalink={`https://www.reddit.com${s.permalink}`} score={s.score} author={s.author} title={s.title} num_comments={s.num_comments} selftext_html={s.selftext_html} is_video={s.is_video} secure_media={s.secure_media} secure_media_embed={s.secure_media_embed} />
                     )
                 })
             }
