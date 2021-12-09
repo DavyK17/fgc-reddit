@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import Post from "./Post";
-import { fetchPosts, selectPosts } from "./postsSlice";
+import { fetchPosts, selectPosts, selectFilter } from "./postsSlice";
 import { selectActive } from "../Subreddits/subredditsSlice";
 
 const Posts = () => {
@@ -10,11 +10,12 @@ const Posts = () => {
     const activeSub = useSelector(selectActive);
 
     const posts = useSelector(selectPosts);
+    const filter = useSelector(selectFilter);
     const { isLoading, hasError } = useSelector(state => state.posts);
 
     useEffect(() => {
         if (activeSub.display_name) {
-            dispatch(fetchPosts({ name: activeSub.display_name }));
+            dispatch(fetchPosts({ name: activeSub.display_name, filter: filter }));
         }
     }, [dispatch, activeSub.display_name])
 
