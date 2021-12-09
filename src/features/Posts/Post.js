@@ -126,8 +126,8 @@ const Post = props => {
                         {/* <img className="author-img" src="gaming.png" alt="Post author" /> */}
                         <a className="author-name" href={`https://www.reddit.com/user/${props.author}`} target="_blank" rel="noreferrer">{props.author}</a>
                     </div>
-                    <a className="post-time mobile-only" href={props.permalink} target="_blank" rel="noreferrer">{epochFromNow(1638981865)}</a>
-                    <a className="post-time lg-only" href={props.permalink} target="_blank" rel="noreferrer">{epochFromNow(1638981865)}</a>
+                    <a className="post-time mobile-only" href={props.permalink} target="_blank" rel="noreferrer">{epochFromNow(props.created)}</a>
+                    <a className="post-time lg-only" href={props.permalink} target="_blank" rel="noreferrer">{epochFromNow(props.created)}</a>
                 </div>
                 <h3 className="post-title">{props.title}</h3>
                 {displayContent()}
