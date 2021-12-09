@@ -16,13 +16,14 @@ export const postsSlice = createSlice({
         isLoading: false,
         hasError: false,
         searchTerm: "",
+        filter: "",
     },
     reducers: {
-        setPosts: (state, action) => {
-            state.posts = action.payload;
-        },
         setSearchTerm: (state, action) => {
             state.searchTerm = action.payload;
+        },
+        setFilter: (state, action) => {
+            state.filter = action.payload;
         },
     },
     extraReducers: {
@@ -45,5 +46,6 @@ export const postsSlice = createSlice({
 
 export const selectPosts = state => state.posts.posts;
 export const selectSearchTerm = state => state.posts.searchTerm;
-export const { setPosts, setSearchTerm } = postsSlice.actions;
+export const selectFilter = state => state.posts.filter;
+export const { setSearchTerm, setFilter } = postsSlice.actions;
 export default postsSlice.reducer;
