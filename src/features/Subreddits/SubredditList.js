@@ -12,6 +12,8 @@ import gamingIcon from "../../img/gaming.png";
 const SubredditList = props => {
     const subs = useSelector(selectSubreddits);
     const active = useSelector(selectActive);
+    const filter = useSelector(selectFilter);
+
     const { isLoading, hasError } = useSelector(state => state.subreddits);
     const { handleActive, handleFilter } = props;
 
@@ -25,15 +27,21 @@ const SubredditList = props => {
         handleActive(selected);
     }
     const switchFilter = ({ target }) => {
-        const filter = target.id.match(/(?<=(subreddit-))(.*)/)[0];
-        handleFilter(filter);
+        if (filter) {
+            $(`#subreddit-${filter}`).removeClass("filter-selected");
+        }
+
+        const selected = target.id.match(/(?<=(subreddit-))(.*)/)[0];
+        $(`#subreddit-${selected}`).addClass("filter-selected");
+
+        handleFilter(selected);
     }
 
     const displayFilters = () => {
         if (Object.keys(active).length !== 0) {
             return (
                 <ul className="subreddit-filters">
-                    <li id="subreddit-hot" onClick={switchFilter}>Hot</li>
+                    <li id="subreddit-hot" className="filter-selected" onClick={switchFilter}>Hot</li>
                     <li id="subreddit-new" onClick={switchFilter}>New</li>
                     <li id="subreddit-top" onClick={switchFilter}>Top</li>
                     <li id="subreddit-rising" onClick={switchFilter}>Rising</li>
