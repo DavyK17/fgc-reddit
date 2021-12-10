@@ -217,7 +217,7 @@ const Post = props => {
     useEffect(() => {
         processHTML(props.id, props.selftext_html);
         processMedia(props.id);
-    }, [dispatch, props.id, props.selftext_html])
+    }, [dispatch])
 
     if (isLoading) {
         return (

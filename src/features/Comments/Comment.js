@@ -39,7 +39,7 @@ const Comment = props => {
 
     useEffect(() => {
         processHTML(props.id, props.body);
-    }, [dispatch, props.id, props.body])
+    }, [dispatch])
 
     return (
         <div className="comment">
