@@ -1,13 +1,16 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import $ from "jquery";
 
-import { setActive } from "../../features/Subreddits/subredditsSlice";
+import { selectActive, setActive } from "../../features/Subreddits/subredditsSlice";
 import SubredditList from "../../features/Subreddits/SubredditList";
-import { setFilter } from "../../features/Posts/postsSlice";
+import { selectFilter, setFilter } from "../../features/Posts/postsSlice";
 
 const Sidebar = () => {
     const dispatch = useDispatch();
+    const activeSub = useSelector(selectActive);
+    const filter = useSelector(selectFilter);
+
     const handleActive = id => {
         dispatch(setActive(id));
         dispatch(setFilter("hot"));
@@ -21,6 +24,10 @@ const Sidebar = () => {
             right: `-100%`,
         }, 500);
     };
+
+    useEffect(() => {
+        closeSidebar();
+    }, [dispatch, activeSub, filter])
 
     return (
         <div className="sidebar">
