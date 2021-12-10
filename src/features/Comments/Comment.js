@@ -24,6 +24,12 @@ const Comment = props => {
             }
         }
     }
+    const processAuthorLink = () => {
+        if (props.author === "[deleted]") {
+            return `https://www.reddit.com/`;
+        }
+        return `https://www.reddit.com/user/${props.author}`
+    }
 
     useEffect(() => {
         processHTML(props.id, props.body);
@@ -34,7 +40,7 @@ const Comment = props => {
             <div className="comment-details-container">
                 <div className="author-details">
                     {/* <img className="author-img" src="gaming.png" alt="Comment author" /> */}
-                    <a className="author-name" href={`https://www.reddit.com/user/${props.author}`} target="_blank" rel="noreferrer">{props.author}</a>
+                    <a className="author-name" href={processAuthorLink()} target="_blank" rel="noreferrer">{props.author}</a>
                 </div>
                 <a className="comment-time" href={`https://www.reddit.com${props.permalink}`} target="_blank" rel="noreferrer">{epochFromNow(props.created)}</a>
             </div>
