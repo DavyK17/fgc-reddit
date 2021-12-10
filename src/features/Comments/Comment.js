@@ -32,9 +32,9 @@ const Comment = props => {
             <div className="comment-details-container">
                 <div className="author-details">
                     {/* <img className="author-img" src="gaming.png" alt="Comment author" /> */}
-                    <span className="author-name">{props.author}</span>
+                    <a className="author-name" href={`https://www.reddit.com/user/${props.author}`} target="_blank" rel="noreferrer">{props.author}</a>
                 </div>
-                <span className="comment-time">{epochFromNow(props.created)}</span>
+                <a className="comment-time" href={`https://www.reddit.com${props.permalink}`} target="_blank" rel="noreferrer">{epochFromNow(props.created)}</a>
             </div>
             <div className="comment-content" id={`comment-text-${props.id}`}></div>
         </div>
