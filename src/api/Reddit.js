@@ -123,6 +123,29 @@ const Reddit = {
             console.log(error);
         }
     },
+
+    async getComments(subreddit, article) {
+        const token = await Reddit.getAccessToken().then(val => {
+            return val;
+        });
+
+        try {
+            const url = `https://oauth.reddit.com/r/${subreddit}/comments/${article}`
+            const headers = {
+                "Authorization": `Bearer ${token}`,
+                "User-Agent": "fgc-reddit by u/DavyK17_ (Codecademy portfolio project)",
+            };
+        
+            const response = await fetch(url, { headers: headers });
+            if (response.ok) {
+                const jsonResponse = await response.json();
+                return jsonResponse[1].data.children;
+            }
+        } catch(error) {
+            console.log(error);
+        }
+
+    },
 }
 
 export default Reddit;
