@@ -405,6 +405,10 @@ header {
     transition: opacity 0.15s ease-in-out;
 }
 
+.vote-button path {
+    pointer-events: none;
+}
+
 .votes-count {
     font-weight: 500;
     margin: 0.5rem 0;
