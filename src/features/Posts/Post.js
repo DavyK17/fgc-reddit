@@ -39,9 +39,7 @@ const Post = props => {
     
                 $(`#vote-count-${props.id}`).text(voting.score);
                 $(`#up-vote-${props.id}`).css({ fill: `${props.sub_color}`, opacity: 1 });
-    
-                console.log(voting);
-    
+        
                 return data;
             }
 
@@ -56,8 +54,6 @@ const Post = props => {
     
                 $(`#vote-count-${props.id}`).text(voting.score);
                 $(`#down-vote-${props.id}`).css({ fill: `${props.sub_color}`, opacity: 1 });
-    
-                console.log(voting);
     
                 return data;
             }
