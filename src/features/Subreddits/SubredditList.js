@@ -30,9 +30,8 @@ const SubredditList = props => {
             $(`#subreddit-${filter}`).removeClass("filter-selected");
         }
         $(`#subreddit-hot`).addClass("filter-selected");
-
-        handleFilter("hot");
     }
+    
     const switchFilter = ({ target }) => {
         if (filter) {
             $(`#subreddit-${filter}`).removeClass("filter-selected");
