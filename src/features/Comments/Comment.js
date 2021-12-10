@@ -21,6 +21,12 @@ const Comment = props => {
         if ((!isLoading && posts.length !== 0) && container) {
             if (!container.innerHTML) {
                 container.prepend(`${txt.value}`);
+                
+                const links = $(`#comment-text-${id} a`);
+                if (links.length > 0) {
+                    links.attr("target", "_blank");
+                    links.attr("rel", "noreferrer");
+                }
             }
         }
     }
