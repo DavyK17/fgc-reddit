@@ -143,7 +143,7 @@ const Post = props => {
                 </div>
                 <h3 className="post-title">{props.title}</h3>
                 {displayContent()}
-                <Comments num_comments={props.num_comments} id={props.id} handleClick={toggleComments} />
+                <Comments id={props.id} num_comments={props.comments.length} comments={props.comments} handleClick={toggleComments} />
             </div>
         </div>
     )
