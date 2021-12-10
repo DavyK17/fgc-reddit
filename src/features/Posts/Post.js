@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import "../../util/skeleton.css";
 
 import { selectActive } from "../Subreddits/subredditsSlice";
-import { selectPosts } from "../../features/Posts/postsSlice";
+import { selectFilteredPosts } from "../../features/Posts/postsSlice";
 import Comments from "../Comments/Comments";
 import epochFromNow from "../../util/epochFromNow";
 
@@ -14,7 +14,7 @@ const Post = props => {
     const dispatch = useDispatch();
     const activeSub = useSelector(selectActive);
 
-    const posts = useSelector(selectPosts);
+    const posts = useSelector(selectFilteredPosts);
     const { isLoading, hasError } = useSelector(state => state.posts);
 
     const displayContent = () => {
@@ -118,7 +118,7 @@ const Post = props => {
     if (activeSub.display_name && posts.length === 0) {
         return (
             <div className="post-container">
-                <p>There are no posts to show. Try selecting a different subreddit.</p>
+                <p>There are no posts to show.</p>
             </div>
         )
     }
@@ -152,7 +152,7 @@ const Post = props => {
                 </div>
                 <h3 className="post-title">{props.title}</h3>
                 {displayContent()}
-                <Comments id={props.id} num_comments={props.comments.length} comments={props.comments} handleClick={toggleComments} />
+                <Comments id={props.id} num_comments={props.comments.length || 0} comments={props.comments} handleClick={toggleComments} />
             </div>
         </div>
     )

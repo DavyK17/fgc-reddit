@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import $ from "jquery";
 
-import { selectPosts } from "../../features/Posts/postsSlice";
+import { selectFilteredPosts } from "../../features/Posts/postsSlice";
 import epochFromNow from "../../util/epochFromNow";
 
 const Comment = props => {
     const dispatch = useDispatch();
 
-    const posts = useSelector(selectPosts);
+    const posts = useSelector(selectFilteredPosts);
     const { isLoading } = useSelector(state => state.posts);
 
     const processHTML = (id, html) => {

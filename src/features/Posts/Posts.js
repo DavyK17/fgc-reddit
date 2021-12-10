@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import Post from "./Post";
-import { fetchPosts, selectPosts, selectFilter } from "./postsSlice";
+import { fetchPosts, selectFilter, selectFilteredPosts } from "./postsSlice";
 import { selectActive } from "../Subreddits/subredditsSlice";
 
 const Posts = () => {
     const dispatch = useDispatch();
     const activeSub = useSelector(selectActive);
 
-    const posts = useSelector(selectPosts);
+    const posts = useSelector(selectFilteredPosts);
     const filter = useSelector(selectFilter);
     const { isLoading, hasError } = useSelector(state => state.posts);
 
