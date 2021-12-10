@@ -74,6 +74,8 @@ const Post = props => {
         txt.innerHTML = html;
 
         const container = $(`#text-${id}`);
+        if (container.children().length > 0) return;
+
         if ((!isLoading && posts.length !== 0) && container) {
             if (!container.innerHTML) {
                 container.prepend(`${txt.value}`);
