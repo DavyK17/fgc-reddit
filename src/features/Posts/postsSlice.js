@@ -28,7 +28,7 @@ export const postsSlice = createSlice({
         isLoading: false,
         hasError: false,
         searchTerm: "",
-        filter: "",
+        filter: "hot",
     },
     reducers: {
         setSearchTerm: (state, action) => {
