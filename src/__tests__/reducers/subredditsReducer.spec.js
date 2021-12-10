@@ -18,10 +18,8 @@ test("sets loading state to 'true' when fetchSubs is pending", () => {
     const action = { type: fetchSubs.pending.type };
     const state = subredditsReducer(initialState, action);
     const expected = Immutable({
-        subs: [],
+        ...initialState,
         isLoading: true,
-        hasError: false,
-        active: {},
     });
 
     expect(state).toEqual(expected);
@@ -32,10 +30,8 @@ test("populates subreddits array when fetchSubs is fulfilled", () => {
     const action = { type: fetchSubs.fulfilled.type, payload: subsMock };
     const state = subredditsReducer(initialState, action);
     const expected = Immutable({
+        ...initialState,
         subs: subsMock,
-        isLoading: false,
-        hasError: false,
-        active: {},
     });
 
     expect(state).toEqual(expected); 
@@ -45,10 +41,8 @@ test("sets error state to 'true' when fetchSubs is rejected", () => {
     const action = { type: fetchSubs.rejected.type };
     const state = subredditsReducer(initialState, action);
     const expected = Immutable({
-        subs: [],
-        isLoading: false,
+        ...initialState,
         hasError: true,
-        active: {},
     });
 
     expect(state).toEqual(expected);
@@ -59,9 +53,7 @@ test("populates active object in state when setActive is called", () => {
     const action = { type: setActive.type, payload: activeMock };
     const state = subredditsReducer(initialState, action);
     const expected = Immutable({
-        subs: [],
-        isLoading: false,
-        hasError: false,
+        ...initialState,
         active: activeMock,
     });
 
