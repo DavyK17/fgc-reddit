@@ -665,6 +665,10 @@ header {
     transition: color 0.15s ease-in-out;
 }
 
+.subreddit-filters .filter-selected {
+    font-weight: bold;
+}
+
 .subreddit-list {
     font-size: 1.5rem;
     margin: unset;
