@@ -2,11 +2,23 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Reddit from "../../api/Reddit";
 
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async ({ name, filter }) => {
-    const data = await Reddit.getPosts(name, filter).then(val => {
-        return val;
+    const data = await Reddit.getPosts(name, filter).then(async (val) => {
+        const posts = await val.map(async (post) => {
+            const comments = await Reddit.getComments(post.subreddit, post.id).then(val => {
+                return val;
+            });
+    
+            return { ...post, comments: comments };
+        });
+        
+        return posts;
     });
 
-    return data;
+    const processed = Promise.all(data).then(val => {
+        return val;
+    });
+    
+    return processed;
 });
 
 export const postsSlice = createSlice({
