@@ -389,6 +389,7 @@ header {
     width: 38px;
     padding: 1rem 0;
     margin-right: 1rem;
+    float: left;
     grid-area: vote;
 }
 
@@ -411,6 +412,8 @@ header {
 
 .post-content-container {
     margin-right: 2.5rem;
+    float: none;
+    overflow: hidden;
     grid-area: content;
 }
 
