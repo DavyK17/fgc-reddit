@@ -19,7 +19,7 @@ const Comments = props => {
             {
                 props.comments.map((s, i) => {
                     return (
-                        <Comment key={i} id={s.data.id} created={s.data.created_utc} author={s.data.author} body={s.data.body_html} />
+                        <Comment key={i} id={s.data.id} permalink={s.data.permalink} created={s.data.created_utc} author={s.data.author} body={s.data.body_html} />
                     )
                 })
             }
