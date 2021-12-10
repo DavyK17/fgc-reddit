@@ -4,7 +4,7 @@ import $ from "jquery";
 
 import { selectActive, setActive } from "../../features/Subreddits/subredditsSlice";
 import SubredditList from "../../features/Subreddits/SubredditList";
-import { selectFilter, setFilter } from "../../features/Posts/postsSlice";
+import { selectFilter, setFilter, setSearchTerm } from "../../features/Posts/postsSlice";
 
 const Sidebar = () => {
     const dispatch = useDispatch();
@@ -14,6 +14,7 @@ const Sidebar = () => {
     const handleActive = id => {
         dispatch(setActive(id));
         dispatch(setFilter("hot"));
+        dispatch(setSearchTerm(""));
     }
     const handleFilter = filter => {
         dispatch(setFilter(filter));
