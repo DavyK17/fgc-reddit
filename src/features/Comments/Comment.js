@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import $ from "jquery";
 
 import { selectFilteredPosts } from "../../features/Posts/postsSlice";
 import epochFromNow from "../../util/epochFromNow";
@@ -14,10 +15,12 @@ const Comment = props => {
         var txt = document.createElement("textarea");
         txt.innerHTML = html;
 
-        const container = document.getElementById(`comment-text-${id}`);
+        const container = $(`#comment-text-${id}`);
+        if (container.children().length > 0) return;
+        
         if ((!isLoading && posts.length !== 0) && container) {
             if (!container.innerHTML) {
-                container.insertAdjacentHTML("afterbegin", `${txt.value}`);
+                container.prepend(`${txt.value}`);
             }
         }
     }
