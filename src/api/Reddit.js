@@ -10,7 +10,7 @@ const clientSecret = "S0JhJxxfKogUviVhk0QAg5F7iQvg3w";
 const userAgent = "fgc-reddit by u/DavyK17_ (Codecademy portfolio project)";
 
 const responseType = "code";
-const redirectURI = "http://localhost:3000"
+const redirectURI = "https://fgc-reddit.netlify.app"
 const authDuration = "permanent";
 
 const Reddit = {
