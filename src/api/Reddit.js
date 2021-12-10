@@ -12,7 +12,7 @@ const redirectURI = "http://localhost:3000"
 const authDuration = "permanent";
 
 const Reddit = {
-    async getAccessToken() {
+    getAccessToken: async () => {
         if (localStorage.getItem("access_token")) return localStorage.getItem("access_token");
 
         const stateMatch = window.location.href.match(/state=([^&]*)/);
@@ -35,7 +35,7 @@ const Reddit = {
                 const response = await fetch(url, {
                     headers: headers,
                     method: "POST",
-                    body: data
+                    body: data,
                 });
                 if (response.ok) {
                     const jsonResponse = await response.json();
@@ -57,7 +57,7 @@ const Reddit = {
         }
     },
 
-    async getUser() {
+    getUser: async () => {
         const token = await Reddit.getAccessToken().then(val => {
             return val;
         });
@@ -79,7 +79,7 @@ const Reddit = {
         }
     },
 
-    async getSubreddit(name) {
+    getSubreddit: async (name) => {
         const token = await Reddit.getAccessToken().then(val => {
             return val;
         });
@@ -101,7 +101,7 @@ const Reddit = {
         }
     },
 
-    async getPosts(name, filter = "hot") {
+    getPosts: async (name, filter = "hot") => {
         const token = await Reddit.getAccessToken().then(val => {
             return val;
         });
@@ -124,7 +124,7 @@ const Reddit = {
         }
     },
 
-    async getComments(subreddit, article) {
+    getComments: async (subreddit, article) => {
         const token = await Reddit.getAccessToken().then(val => {
             return val;
         });
@@ -145,6 +145,32 @@ const Reddit = {
             console.log(error);
         }
 
+    },
+
+    castVote: async (direction, id) => {
+        const token = await Reddit.getAccessToken().then(val => {
+            return val;
+        });
+
+        try {
+            const url = `https://oauth.reddit.com/api/vote`
+            const headers = {
+                "Authorization": `Bearer ${token}`,
+                "User-Agent": "fgc-reddit by u/DavyK17_ (Codecademy portfolio project)",
+            };
+            const data = new URLSearchParams({
+                dir: direction,
+                id: id,
+            });
+        
+            const response = await fetch(url, { method: "POST", headers: headers, body: data });
+            if (response.ok) {
+                const jsonResponse = await response.json();
+                return jsonResponse;
+            }
+        } catch(error) {
+            console.log(error);
+        }
     },
 }
 
