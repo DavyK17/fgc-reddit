@@ -23,19 +23,10 @@ const Posts = () => {
         <h2 id="subreddit-title">{activeSub.title || activeSub.display_name_prefixed || "r/Subreddit"}</h2>
     );
 
-    if (posts.length === 0 || hasError) {
+    if (isLoading || hasError || posts.length === 0) {
         return (
             <div className="posts">
                 {title}
-                <Post />
-            </div>
-        )
-    }
-    if (isLoading) {
-        return (
-            <div className="posts">
-                {title}
-                <Post />
                 <Post />
             </div>
         )
