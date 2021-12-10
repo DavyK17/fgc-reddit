@@ -7,6 +7,7 @@ let expiryTime;
 
 const clientID = "6GyLIZKwo2Oo3s1FgtecFw";
 const clientSecret = "S0JhJxxfKogUviVhk0QAg5F7iQvg3w";
+const userAgent = "fgc-reddit by u/DavyK17_ (Codecademy portfolio project)";
 
 const responseType = "code";
 const redirectURI = "http://localhost:3000"
@@ -31,7 +32,10 @@ const Reddit = {
             try {
                 const credentials = Buffer.from(`${clientID}:${clientSecret}`).toString("base64");
                 const url = "https://www.reddit.com/api/v1/access_token";
-                const headers = { Authorization: `Basic ${credentials}` };
+                const headers = {
+                    "Authorization": `Basic ${credentials}`,
+                    "User-Agent": `${userAgent}`,
+                };
 
                 const response = await fetch(url, {
                     headers: headers,
@@ -66,7 +70,10 @@ const Reddit = {
         try {
             const credentials = Buffer.from(`${clientID}:${clientSecret}`).toString("base64");
             const url = "https://www.reddit.com/api/v1/access_token";
-            const headers = { Authorization: `Basic ${credentials}` };
+            const headers = {
+                "Authorization": `Basic ${credentials}`,
+                "User-Agent": `${userAgent}`,
+            };
 
             const response = await fetch(url, {
                 headers: headers,
@@ -95,7 +102,7 @@ const Reddit = {
             const url = "https://oauth.reddit.com/api/v1/me"
             const headers = {
                 "Authorization": `Bearer ${token}`,
-                "User-Agent": "fgc-reddit by u/DavyK17_ (Codecademy portfolio project)",
+                "User-Agent": `${userAgent}`,
             };
     
             const response = await fetch(url, { headers: headers });
@@ -117,7 +124,7 @@ const Reddit = {
             const url = `https://oauth.reddit.com/r/${name}/about`
             const headers = {
                 "Authorization": `Bearer ${token}`,
-                "User-Agent": "fgc-reddit by u/DavyK17_ (Codecademy portfolio project)",
+                "User-Agent": `${userAgent}`,
             };
         
             const response = await fetch(url, { headers: headers });
@@ -139,7 +146,7 @@ const Reddit = {
             const url = `https://oauth.reddit.com/r/${name}/${filter}`
             const headers = {
                 "Authorization": `Bearer ${token}`,
-                "User-Agent": "fgc-reddit by u/DavyK17_ (Codecademy portfolio project)",
+                "User-Agent": `${userAgent}`,
             };
         
             const response = await fetch(url, { headers: headers });
@@ -162,7 +169,7 @@ const Reddit = {
             const url = `https://oauth.reddit.com/r/${subreddit}/comments/${article}`
             const headers = {
                 "Authorization": `Bearer ${token}`,
-                "User-Agent": "fgc-reddit by u/DavyK17_ (Codecademy portfolio project)",
+                "User-Agent": `${userAgent}`,
             };
         
             const response = await fetch(url, { headers: headers });
@@ -185,7 +192,7 @@ const Reddit = {
             const url = `https://oauth.reddit.com/api/vote`
             const headers = {
                 "Authorization": `Bearer ${token}`,
-                "User-Agent": "fgc-reddit by u/DavyK17_ (Codecademy portfolio project)",
+                "User-Agent": `${userAgent}`,
             };
             const data = new URLSearchParams({
                 dir: direction,
