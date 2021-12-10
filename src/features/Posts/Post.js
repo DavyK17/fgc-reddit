@@ -5,12 +5,14 @@ import $ from "jquery";
 import Skeleton from "react-loading-skeleton";
 import "../../util/skeleton.css";
 
+import { selectActive } from "../Subreddits/subredditsSlice";
 import { selectPosts } from "../../features/Posts/postsSlice";
 import Comments from "../Comments/Comments";
 import epochFromNow from "../../util/epochFromNow";
 
 const Post = props => {
     const dispatch = useDispatch();
+    const activeSub = useSelector(selectActive);
 
     const posts = useSelector(selectPosts);
     const { isLoading, hasError } = useSelector(state => state.posts);
@@ -81,13 +83,6 @@ const Post = props => {
         processHTML(props.id, props.selftext_html);
     }, [dispatch])
 
-    if (posts.length === 0) {
-        return (
-            <div className="post-container">
-                <p>Select a subreddit to view posts.</p>
-            </div>
-        )
-    }
     if (isLoading) {
         return (
             <div className="post-container">
@@ -108,7 +103,21 @@ const Post = props => {
     if (hasError) {
         return (
             <div className="post-container">
-                <p>An error occurred. Kindly try again.</p>
+                <p>An error has occurred. Kindly try again.</p>
+            </div>
+        )
+    }
+    if (activeSub.display_name && posts.length === 0) {
+        return (
+            <div className="post-container">
+                <p>There are no posts to show. Try selecting a different subreddit.</p>
+            </div>
+        )
+    }
+    if (posts.length === 0) {
+        return (
+            <div className="post-container">
+                <p>Select a subreddit to view posts.</p>
             </div>
         )
     }
