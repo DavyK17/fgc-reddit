@@ -18,10 +18,8 @@ test("sets loading state to 'true' when fetchUser is pending", () => {
     const action = { type: fetchUser.pending.type };
     const state = userReducer(initialState, action);
     const expected = Immutable({
-        name: "",
-        authState: false,
+        ...initialState,
         isLoading: true,
-        hasError: false,
     });
 
     expect(state).toEqual(expected);
@@ -31,10 +29,9 @@ test("sets authentication state to 'true' and updates username when fetchUser is
     const action = { type: fetchUser.fulfilled.type, payload: "User" };
     const state = userReducer(initialState, action);
     const expected = Immutable({
+        ...initialState,
         name: "User",
         authState: true,
-        isLoading: false,
-        hasError: false,
     });
 
     expect(state).toEqual(expected);
@@ -44,9 +41,7 @@ test("sets error state to 'true' when fetchUser is rejected", () => {
     const action = { type: fetchUser.rejected.type };
     const state = userReducer(initialState, action);
     const expected = Immutable({
-        name: "",
-        authState: false,
-        isLoading: false,
+        ...initialState,
         hasError: true,
     });
 

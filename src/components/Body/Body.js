@@ -1,13 +1,15 @@
 import React from "react";
-import Posts from "./Posts";
+import Posts from "../../features/Posts/Posts";
 import Sidebar from "./Sidebar";
 
 const Body = () => {
     return (
-      <section className="reddit">
-          <Posts />
-          <Sidebar />
-      </section>
+        <section className="reddit">
+            <main>
+                <Posts />
+            </main>
+            <Sidebar />
+        </section>
     );
 }
 

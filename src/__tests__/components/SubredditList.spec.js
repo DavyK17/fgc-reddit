@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 
 import { store } from '../../app/store';
 import SubredditList from '../../features/Subreddits/SubredditList';
-import { fetchSubs, setActive } from "../../features/Subreddits/subredditsSlice";
+import { fetchSubs } from "../../features/Subreddits/subredditsSlice";
 
 const subsMock = [
     {
