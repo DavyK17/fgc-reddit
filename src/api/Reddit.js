@@ -3,6 +3,7 @@ import checkNested from "../util/checkNested";
 
 let state = makeID(7);
 let code;
+let expiryTime;
 
 const clientID = "6GyLIZKwo2Oo3s1FgtecFw";
 const clientSecret = "S0JhJxxfKogUviVhk0QAg5F7iQvg3w";
@@ -40,11 +41,11 @@ const Reddit = {
                 if (response.ok) {
                     const jsonResponse = await response.json();
                     localStorage.setItem("access_token", jsonResponse.access_token);
+                    localStorage.setItem("refresh_token", jsonResponse.refresh_token);
 
-                    let expiryTime = Number(jsonResponse.expires_in);
+                    expiryTime = Number(jsonResponse.expires_in);
 
-                    window.setTimeout(() => localStorage.setItem("access_token", ""), expiryTime * 1000);
-                    window.history.pushState("Access Token", null, "/");
+                    window.setTimeout(() => Reddit.refreshAccessToken(), expiryTime * 1000);
 
                     return localStorage.getItem("access_token");
                 }
@@ -54,6 +55,34 @@ const Reddit = {
         } else {
             const scopes = "identity vote read";
             window.location.href = `https://www.reddit.com/api/v1/authorize?client_id=${clientID}&response_type=${responseType}&state=${state}&redirect_uri=${encodeURIComponent(redirectURI)}&duration=${authDuration}&scope=${encodeURIComponent(scopes)}`;
+        }
+    },
+
+    refreshAccessToken: async () => {
+        const data = new URLSearchParams({
+            grant_type: "refresh_token",
+            refresh_token: localStorage.getItem("refresh_token")
+        });
+        try {
+            const credentials = Buffer.from(`${clientID}:${clientSecret}`).toString("base64");
+            const url = "https://www.reddit.com/api/v1/access_token";
+            const headers = { Authorization: `Basic ${credentials}` };
+
+            const response = await fetch(url, {
+                headers: headers,
+                method: "POST",
+                body: data,
+            });
+            if (response.ok) {
+                const jsonResponse = await response.json();
+                localStorage.setItem("access_token", jsonResponse.access_token);
+
+                expiryTime = Number(jsonResponse.expires_in);
+
+                return localStorage.getItem("access_token");
+            }
+        } catch(error) {
+            console.log(error);
         }
     },
 
