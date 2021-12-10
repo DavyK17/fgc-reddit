@@ -5,6 +5,8 @@ import $ from "jquery";
 import icon from "../../img/icon.svg";
 import logo from "../../img/logo.svg";
 
+import Search from "../../features/Search/Search";
+import { setSearchTerm } from "../../features/Posts/postsSlice";
 import User from "../../features/User/User";
 import { fetchUser } from "../../features/User/userSlice";
 
@@ -16,6 +18,11 @@ const Header = () => {
             right: "0",
         }, 500);
     };
+
+    const onSearchSubmit = (e) => {
+        e.preventDefault();
+        dispatch(setSearchTerm(e.target.previousElementSibling.value));
+    }
 
     const handleAuth = (e) => {
         e.preventDefault();
@@ -29,10 +36,7 @@ const Header = () => {
                 <img className="lg-only" src={logo} alt="FGC Reddit" />
             </div>
             <div className="col search">
-                <form id="search-bar">
-                    <input type="search" />
-                    <button type="submit">Search</button>
-                </form>
+                <Search onSearchSubmit={onSearchSubmit} />
             </div>
             <div className="col userbox">
                 <User handleAuth={handleAuth} />
