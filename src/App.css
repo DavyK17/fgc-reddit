@@ -460,9 +460,10 @@ header {
 }
 
 @media (min-width: 992px) {
-    .post-time::before {
+    .post-details-container .bullet::before {
         content: "\2022";
-        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+        opacity: 0.75;
     }
 }
 
