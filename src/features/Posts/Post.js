@@ -77,6 +77,12 @@ const Post = props => {
         if ((!isLoading && posts.length !== 0) && container) {
             if (!container.innerHTML) {
                 container.insertAdjacentHTML("afterbegin", `${txt.value}`);
+                
+                const links = $(`#text-${id} a`);
+                if (links.length > 0) {
+                    links.attr("target", "_blank");
+                    links.attr("rel", "noreferrer");
+                }
             }
         }
     }
