@@ -223,12 +223,12 @@ const Post = props => {
                 <div className="post-content-container">
                     <div className="post-details-container">
                         <div className="author-details">
-                            <Skeleton />
+                            <Skeleton containerTestId="author-loading" />
                         </div>
                     </div>
-                    <Skeleton />
+                    <Skeleton containerTestId="post-loading" />
                     <div className="post-comments-container showing-comments">
-                        <Skeleton />
+                        <Skeleton containerTestId="comment-loading" />
                     </div>
                 </div>
             </div>
