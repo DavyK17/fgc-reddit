@@ -57,7 +57,7 @@ const Post = props => {
 
     const toggleComments = ({ target }) => {
         if (props.comments.length === 0) return;
-        
+
         const container = $(target).parents(".post-comments-container");
         container.toggleClass("showing-comments");
 
@@ -141,6 +141,7 @@ const Post = props => {
                         {/* <img className="author-img" src="gaming.png" alt="Post author" /> */}
                         <a className="author-name" href={`https://www.reddit.com/user/${props.author}`} target="_blank" rel="noreferrer">{props.author}</a>
                     </div>
+                    <span className="bullet" style={{ color: props.sub_color }}></span>
                     <a className="post-time" href={props.permalink} target="_blank" rel="noreferrer">{epochFromNow(props.created)}</a>
                 </div>
                 <h3 className="post-title">{props.title}</h3>
