@@ -563,6 +563,7 @@ header {
 
 .comment-time {
     text-align: right;
+    text-decoration: none;
     opacity: 0.75;
 }
 
