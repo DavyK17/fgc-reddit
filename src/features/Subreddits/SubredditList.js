@@ -25,6 +25,13 @@ const SubredditList = props => {
 
         const selected = subs.filter(sub => sub.name === target.id)[0];
         handleActive(selected);
+
+        if (filter !== "hot") {
+            $(`#subreddit-${filter}`).removeClass("filter-selected");
+        }
+        $(`#subreddit-hot`).addClass("filter-selected");
+
+        handleFilter("hot");
     }
     const switchFilter = ({ target }) => {
         if (filter) {
