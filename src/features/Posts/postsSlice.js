@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, createSelector } from "@reduxjs/toolkit";
 import Reddit from "../../api/Reddit";
 
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async ({ name, filter }) => {
@@ -59,5 +59,14 @@ export const postsSlice = createSlice({
 export const selectPosts = state => state.posts.posts;
 export const selectSearchTerm = state => state.posts.searchTerm;
 export const selectFilter = state => state.posts.filter;
+
+export const selectFilteredPosts = createSelector([selectPosts, selectSearchTerm], (posts, searchTerm) => {
+    if (searchTerm !== "") {
+        return posts.filter(post => post.title.toLowerCase().includes(searchTerm.toLowerCase()));
+    }
+
+    return posts;
+});
+
 export const { setSearchTerm, setFilter } = postsSlice.actions;
 export default postsSlice.reducer;
