@@ -56,6 +56,8 @@ const Post = props => {
     }
 
     const toggleComments = ({ target }) => {
+        if (props.comments.length === 0) return;
+        
         const container = $(target).parents(".post-comments-container");
         container.toggleClass("showing-comments");
 
