@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import $ from "jquery";
 
+import Reddit from "../../api/Reddit";
 import Skeleton from "react-loading-skeleton";
 import "../../util/skeleton.css";
 
@@ -12,10 +13,122 @@ import epochFromNow from "../../util/epochFromNow";
 
 const Post = props => {
     const dispatch = useDispatch();
-    const activeSub = useSelector(selectActive);
 
+    const activeSub = useSelector(selectActive);
     const posts = useSelector(selectFilteredPosts);
     const { isLoading, hasError } = useSelector(state => state.posts);
+
+    const voting = {
+        voted: false,
+        dir: 0,
+        score: props.score,
+    }
+
+    const handleVote = async (e) => {
+        e.preventDefault();
+
+        if (!voting.voted) {
+            if (e.target.getAttribute("aria-label") === "Up vote") {
+                const data = await Reddit.castVote("1", props.fullname).then(val => {
+                    return val;
+                });
+    
+                voting.voted = true;
+                voting.dir = 1;
+                voting.score++;
+    
+                $(`#vote-count-${props.id}`).text(voting.score);
+                $(`#up-vote-${props.id}`).css({ fill: `${props.sub_color}`, opacity: 1 });
+    
+                console.log(voting);
+    
+                return data;
+            }
+
+            if (e.target.getAttribute("aria-label") === "Down vote") {
+                const data = await Reddit.castVote("-1", props.fullname).then(val => {
+                    return val;
+                });
+    
+                voting.voted = true;
+                voting.dir = -1;
+                voting.score--;
+    
+                $(`#vote-count-${props.id}`).text(voting.score);
+                $(`#down-vote-${props.id}`).css({ fill: `${props.sub_color}`, opacity: 1 });
+    
+                console.log(voting);
+    
+                return data;
+            }
+        }
+
+        if (voting.voted) {
+            if (voting.dir === 1) {
+                if (e.target.getAttribute("aria-label") === "Up vote") {
+                    const data = await Reddit.castVote("0", props.fullname).then(val => {
+                        return val;
+                    });
+        
+                    voting.voted = false;
+                    voting.dir = 0;
+                    voting.score--;
+        
+                    $(`#vote-count-${props.id}`).text(voting.score);
+                    $(`#up-vote-${props.id}`).css({ fill: "initial", opacity: 0.5 });
+        
+                    return data;
+                }
+
+                if (e.target.getAttribute("aria-label") === "Down vote") {
+                    const data = await Reddit.castVote("-1", props.fullname).then(val => {
+                        return val;
+                    });
+        
+                    voting.dir = -1;
+                    voting.score -= 2;
+        
+                    $(`#vote-count-${props.id}`).text(voting.score);
+                    $(`#up-vote-${props.id}`).css({ fill: "initial", opacity: 0.5 });
+                    $(`#down-vote-${props.id}`).css({ fill: `${props.sub_color}`, opacity: 1 });
+        
+                    return data;
+                }
+            }
+
+            if (voting.dir === -1) {
+                if (e.target.getAttribute("aria-label") === "Up vote") {
+                    const data = await Reddit.castVote("1", props.fullname).then(val => {
+                        return val;
+                    });
+        
+                    voting.dir = 1;
+                    voting.score += 2;
+        
+                    $(`#vote-count-${props.id}`).text(voting.score);
+                    $(`#down-vote-${props.id}`).css({ fill: "initial", opacity: 0.5 });
+                    $(`#up-vote-${props.id}`).css({ fill: `${props.sub_color}`, opacity: 1 });
+        
+                    return data;
+                }
+
+                if (e.target.getAttribute("aria-label") === "Down vote") {
+                    const data = await Reddit.castVote("0", props.fullname).then(val => {
+                        return val;
+                    });
+        
+                    voting.voted = false;
+                    voting.dir = 0;
+                    voting.score++;
+        
+                    $(`#vote-count-${props.id}`).text(voting.score);
+                    $(`#down-vote-${props.id}`).css({ fill: "initial", opacity: 0.5 });
+        
+                    return data;
+                }
+            }
+        }
+    }
 
     const displayContent = () => {
         if (props.selftext_html) {
@@ -52,7 +165,7 @@ const Post = props => {
     }
     const displayScore = () => {
         if (props.hide_score) return "Vote";
-        return props.score;
+        return voting.score;
     }
 
     const toggleComments = ({ target }) => {
@@ -150,13 +263,13 @@ const Post = props => {
     return (
         <div className="post-container">
             <div className="post-votes-container">
-                <button type="button" className="vote-button up-vote" aria-label="Up vote">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z"/></svg>
-                </button>
-                <span className="votes-count">{displayScore()}</span>
-                <button type="button" className="vote-button down-vote" aria-label="Down vote">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"/></svg>
-                </button>
+                <svg className="vote-button" id={`up-vote-${props.id}`} aria-label="Up vote" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-label="Up vote" onClick={handleVote}>
+                    <path d="M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z"/>
+                </svg>
+                <span className="votes-count" id={`vote-count-${props.id}`}>{displayScore()}</span>
+                <svg className="vote-button" id={`down-vote-${props.id}`} aria-label="Down vote" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-label="Down vote" onClick={handleVote}>
+                    <path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"/>
+                </svg>
             </div>
             <div className="post-content-container">
                 <div className="post-details-container">
