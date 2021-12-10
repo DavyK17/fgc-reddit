@@ -73,10 +73,10 @@ const Post = props => {
         var txt = document.createElement("textarea");
         txt.innerHTML = html;
 
-        const container = document.getElementById(`text-${id}`);
+        const container = $(`#text-${id}`);
         if ((!isLoading && posts.length !== 0) && container) {
             if (!container.innerHTML) {
-                container.insertAdjacentHTML("afterbegin", `${txt.value}`);
+                container.prepend(`${txt.value}`);
                 
                 const links = $(`#text-${id} a`);
                 if (links.length > 0) {
@@ -86,10 +86,19 @@ const Post = props => {
             }
         }
     }
+    const processMedia = id => {
+        const container = $(`#media-${id}`);
+        container.children().each(function(i) {
+            if (!$(this).is("img") && !$(this).is("video")) {
+                $(this).remove();
+            }
+        })
+    }
 
     useEffect(() => {
         processHTML(props.id, props.selftext_html);
-    }, [dispatch])
+        processMedia(props.id);
+    }, [dispatch, props.id, props.selftext_html])
 
     if (isLoading) {
         return (
