@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import $ from "jquery";
 
 import { selectFilteredPosts } from "../../features/Posts/postsSlice";
 import epochFromNow from "../../util/epochFromNow";
@@ -25,7 +24,7 @@ const Comment = props => {
 
     useEffect(() => {
         processHTML(props.id, props.body);
-    }, [dispatch])
+    }, [dispatch, props.id, props.body])
 
     return (
         <div className="comment">
