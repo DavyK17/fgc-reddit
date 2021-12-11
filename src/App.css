@@ -266,6 +266,28 @@ header {
     transition: color 0.15s ease-in-out;
 }
 
+#reddit-logout {
+    width: 24px;
+    height: 24px;
+    margin-left: 0.75rem;
+    transition: fill 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+#reddit-logout.lg-only {
+    fill: #ccc;
+}
+
+#reddit-logout.lg-only:hover,
+#reddit-logout.lg-only:focus {
+    fill: #99f;
+    transition: fill 0.15s ease-in-out;
+}
+
+#reddit-logout path {
+    pointer-events: none;
+}
+
 #top-menu {
     display: none;
     width: 24px;
@@ -614,13 +636,15 @@ header {
     margin-bottom: 1.5rem;
 }
 
-.reddit .sidebar-close {
+.reddit .sidebar-close-container {
     display: none;
 }
 
 @media (max-width: 991px) {
-    .reddit .sidebar-close {
-        display: block;
+    .reddit .sidebar-close-container {
+        display: flex;
+        width: 75px;
+        justify-content: space-between;
     }
 }
 
