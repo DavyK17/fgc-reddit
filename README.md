@@ -7,7 +7,7 @@ This is a portfolio project I did as part of my full stack engineer course on [C
 - Build the application using React and Redux
 - Version control your application with Git and host the repository on GitHub
 - Use a project management tool (GitHub Projects, Trello, etc.) to plan your work
-- Write a README (using Markdown) that documents your project including:
+- Write a README (using Markdown) that documents your project
 - Write unit tests for your components using Jest and Enzyme
 - Write end-to-end tests for your application
 - Users can use the application on any device (desktop to mobile)
@@ -28,7 +28,7 @@ This is a portfolio project I did as part of my full stack engineer course on [C
 
 ## How it was built
 ### Base libraries/techonolgies
-- [React](https://reactjs.org/) - JavaScript library
+- [React](https://reactjs.org/) - JavaScript user interface library
 - [Redux](https://redux.js.org/) - State management tool
 - [React-Redux](https://react-redux.js.org/) - React bindings for Redux
 - [Redux Toolkit](https://redux-toolkit.js.org/) - Redux development utility library
