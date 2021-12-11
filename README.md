@@ -74,6 +74,6 @@ Aside from viewing displayed content, users are also able to view all top-level 
 ![Mobile version with sidebar open](./src/screenshot-mobile-sidebar.png)
 ![Mobile version with posts from Tekken subreddit rendered](./src/screenshot-mobile-tekken-example.png)
 
-# Author
+## Author
 - GitHub: [@DavyK17](https://github.com/DavyK17)
 - Website: [davyk17.github.io](https://davyk17.github.io)
