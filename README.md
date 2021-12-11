@@ -82,6 +82,9 @@ As you can tell from my initial wireframe, I was a bit over-ambitious with my pr
 ![Mobile version with sidebar open](./src/screenshot-mobile-sidebar.png)
 ![Mobile version with posts from Tekken subreddit rendered](./src/screenshot-mobile-tekken-example.png)
 
+## Future work
+The app is currently experiencing a few bugs that I would like to fix, which can be examined in detail by viewing the project's [Issues](/issues).
+
 ## Author
 - GitHub: [@DavyK17](https://github.com/DavyK17)
 - Website: [davyk17.github.io](https://davyk17.github.io)
