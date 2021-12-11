@@ -118,6 +118,17 @@ const Reddit = {
     }
   },
 
+  logoutUser: async () => {
+    try {
+      // clear all the tokens in local storage
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
+      return;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
   getSubreddit: async (name) => {
     const token = await Reddit.getAccessToken().then((val) => {
       return val;
