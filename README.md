@@ -65,6 +65,10 @@ Once authentication with Reddit is fulfilled, the user is able to pick from 22 p
 Aside from viewing displayed content, users are also able to view all top-level comments for each post (excluding replies), as well as filter posts by Reddit's listing options (Hot [by default], New, Top, or Rising), and upvote, downvote, or unvote on each post. Users may also use the search box to filter through the rendered posts.
 
 ## Screenshots
+### Wireframe
+![Initial wireframe](./src/wireframe.jpg)
+As you can tell from my initial wireframe, I was a bit over-ambitious with my project in the beginning, and had to abandon certain features I had envisioned, such as voting on comments and posting comments (perhaps these are features that can be added in the future).
+
 ### Desktop version
 ![Desktop version with home page](./src/screenshot-desktop.png)
 ![Desktop version with posts from Tekken subreddit rendered](./src/screenshot-desktop-tekken-example.png)
