@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 
 import "./util/reset.css";
 import "./App.css";
+import Reddit from './api/Reddit';
 
 import Header from "./components/Header/Header";
 import Body from "./components/Body/Body";
@@ -12,6 +13,13 @@ import { fetchSubs } from "./features/Subreddits/subredditsSlice";
 
 function App() {
     const dispatch = useDispatch();
+    
+    const handleLogout = async () => {
+        await Reddit.logoutUser();
+        
+        const logoutUser = { type: "logoutUser" };
+        dispatch(logoutUser);
+    };
 
     useEffect(() => {
         const stateMatch = window.location.href.match(/state=([^&]*)/);
@@ -31,8 +39,8 @@ function App() {
 
     return (
         <>
-            <Header />
-            <Body />
+            <Header handleLogout={handleLogout} />
+            <Body handleLogout={handleLogout} />
         </>
     );
 }
