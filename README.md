@@ -39,7 +39,7 @@ This is a portfolio project I did as part of my full stack engineer course on [C
 ## Features
 FGC Reddit is a single page app (SPA) with a simple design that is accessible from desktop, tablet and mobile devices with all modern browsers, with Lighthouse scores of 98 for performance, 100 for accessibility, 93 for best practices, and 100 for SEO (full report can be viewed by [clicking here](./src/lighthouse.pdf)).
 
-Once authentication with Reddit is fulfilled, the user is able to pick from 22 predefined subreddits related to the fighting game community (FGC), including the /r/Fighters subreddit and those covering the following franchises:
+Once authentication with Reddit is fulfilled, the user is able to pick from 22 predefined subreddits related to the fighting game community (FGC), including the /r/Fighters subreddit and those covering the following games/franchises:
 - Blazblue
 - Brawlhalla
 - Dead or Alive
@@ -62,7 +62,7 @@ Once authentication with Reddit is fulfilled, the user is able to pick from 22 p
 - Under Night In-Birth (UNI)
 - Virtua Fighter
 
-Aside from viewing displayed content, users are also able to upvote, downvote, or unvote on each posts, as well as view all top-level comments for each post (excluding replies). Users may also use the search box to filter through the rendered posts.
+Aside from viewing displayed content, users are also able to view all top-level comments for each post (excluding replies), as well as filter posts by Reddit's listing options (Hot [by default], New, Top, or Rising), and upvote, downvote, or unvote on each post. Users may also use the search box to filter through the rendered posts.
 
 ## Screenshots
 ### Desktop version
