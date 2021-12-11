@@ -26,6 +26,20 @@ const Post = props => {
         score: props.score,
     }
 
+    useEffect(() => {
+        if (props.likes === true) {
+            voting.voted = true;
+            voting.dir = 1;
+            $(`#up-vote-${props.id}`).css({ fill: `${props.sub_color}`, opacity: 1 });
+        }
+    
+        if (props.likes === false) {
+            voting.voted = true;
+            voting.dir = -1;
+            $(`#down-vote-${props.id}`).css({ fill: `${props.sub_color}`, opacity: 1 });
+        }
+    }, [dispatch])
+
     const handleVote = async (e) => {
         e.preventDefault();
 
