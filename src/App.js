@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import $ from "jquery";
 
 import "./util/reset.css";
 import "./App.css";
@@ -19,6 +20,10 @@ function App() {
         
         const logoutUser = { type: "logoutUser" };
         dispatch(logoutUser);
+
+        $(".sidebar").animate({
+            right: `-100%`,
+        }, 500);
     };
 
     useEffect(() => {
