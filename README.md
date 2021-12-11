@@ -2,6 +2,8 @@
 
 This is a portfolio project I did as part of my full stack engineer course on [Codecademy](https://codecademy.com). It is a React-Redux app that allows the user to view [Reddit](https://reddit.com) posts from various fighting game community (FGC)-related subreddits. The app requires authentication with the user's Reddit account to be used, and does not display posts containing galleries, links, or embeds.
 
+Live link: [fgc-reddit.netlify.app](https://fgc-reddit.netlify.app)
+
 ## The project
 ### Requirements
 - Build the application using React and Redux
