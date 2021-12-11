@@ -8,10 +8,11 @@ import logo from '../../img/logo.svg';
 import Search from '../../features/Search/Search';
 import { setSearchTerm } from '../../features/Posts/postsSlice';
 import User from '../../features/User/User';
-import { fetchUser, logoutUser } from '../../features/User/userSlice';
+import { fetchUser } from '../../features/User/userSlice';
 
-const Header = () => {
+const Header = (props) => {
   const dispatch = useDispatch();
+  const { handleLogout } = props;
 
   const openSidebar = () => {
     $('.sidebar').animate(
@@ -30,10 +31,6 @@ const Header = () => {
   const handleAuth = (e) => {
     e.preventDefault();
     dispatch(fetchUser());
-  };
-
-  const handleLogout = (e) => {
-    dispatch(logoutUser());
   };
 
   return (
