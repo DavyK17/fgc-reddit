@@ -71,3 +71,20 @@ test("renders Reddit authentication link when authentication is rejected", () =>
 
     expect(screen.getByText("Link with Reddit")).toBeInTheDocument();
 });
+
+test("calls handleLogout() when logout button is clicked", () => {
+    const logoutMock = jest.fn();
+
+    render(
+        <Provider store={store}>
+            <User handleLogout={logoutMock} />
+        </Provider>
+    );
+    const authMock = () => {
+        return { type: fetchUser.fulfilled.type, payload: "User" }
+    }
+    store.dispatch(authMock());
+
+    userEvent.click(screen.getByTestId("reddit-logout"));
+    expect(logoutMock).toBeCalled();
+});
