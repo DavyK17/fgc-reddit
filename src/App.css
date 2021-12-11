@@ -715,10 +715,18 @@ header {
 }
 
 @media (max-width: 991px) {
-    .subreddit-list .placeholder {
+    .subreddit-list {
         margin-top: 1.5rem;
+        min-height: 30px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .subreddit-list .placeholder {
         padding-top: 1.5rem;
         border-top: 1px solid rgba(0, 0, 0, 0.5);
+    }
+    .subreddit-list .react-loading-skeleton {
+        border: 1px solid rgba(0, 0, 0, 1);
     }
 }
 
