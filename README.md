@@ -74,13 +74,11 @@ Aside from viewing displayed content, users are also able to view all top-level 
 As you can tell from my initial wireframe, I was a bit over-ambitious with my project in the beginning, and had to abandon certain features I had envisioned, such as voting on comments and posting comments (perhaps these are features that can be added in the future).
 
 ### Desktop version
-![Desktop version with home page](./readme/screenshot-desktop.png)
-![Desktop version with posts from Tekken subreddit rendered](./readme/screenshot-desktop-tekken-example.png)
+![Desktop version home page](./readme/screenshot-desktop.png)
+![Desktop version with posts rendered from Tekken subreddit](./readme/screenshot-desktop-tekken-example.png)
 
 ### Mobile version
-![Mobile version with home page](./readme/screenshot-mobile.png)
-![Mobile version with sidebar open](./readme/screenshot-mobile-sidebar.png)
-![Mobile version with posts from Tekken subreddit rendered](./readme/screenshot-mobile-tekken-example.png)
+![Mobile version, from left to right: Home page, with sidebar open, and with posts rendered from Tekken subreddit](./readme/screenshot-mobile.png)
 
 ## Future work
 The app is currently experiencing a few bugs that I would like to fix, which can be examined in detail by viewing the project's [Issues](https://github.com/DavyK17/fgc-reddit/issues).
