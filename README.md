@@ -41,7 +41,7 @@ This is a portfolio project I did as part of my full stack engineer course on [C
 - [Moment.js](https://momentjs.com/) - JavaScript time manipulation library
 
 ## Features
-FGC Reddit is a single page app (SPA) with a simple design that is accessible from desktop, tablet and mobile devices with all modern browsers, with Lighthouse scores of 98 for performance, 100 for accessibility, 93 for best practices, and 100 for SEO (full report can be viewed by [clicking here](./src/lighthouse.pdf)).
+FGC Reddit is a single page app (SPA) with a simple design that is accessible from desktop, tablet and mobile devices with all modern browsers, with Lighthouse scores of 98 for performance, 100 for accessibility, 93 for best practices, and 100 for SEO (full report can be viewed by [clicking here](./readme/lighthouse.pdf)).
 
 Once authentication with Reddit is fulfilled, the user is able to pick from 22 predefined subreddits related to the fighting game community (FGC), including the /r/Fighters subreddit and those covering the following games/franchises:
 - Blazblue
@@ -70,17 +70,17 @@ Aside from viewing displayed content, users are also able to view all top-level 
 
 ## Screenshots
 ### Wireframe
-![Initial wireframe](./src/wireframe.jpg)
+![Initial wireframe](./readme/wireframe.jpg)
 As you can tell from my initial wireframe, I was a bit over-ambitious with my project in the beginning, and had to abandon certain features I had envisioned, such as voting on comments and posting comments (perhaps these are features that can be added in the future).
 
 ### Desktop version
-![Desktop version with home page](./src/screenshot-desktop.png)
-![Desktop version with posts from Tekken subreddit rendered](./src/screenshot-desktop-tekken-example.png)
+![Desktop version with home page](./readme/screenshot-desktop.png)
+![Desktop version with posts from Tekken subreddit rendered](./readme/screenshot-desktop-tekken-example.png)
 
 ### Mobile version
-![Mobile version with home page](./src/screenshot-mobile.png)
-![Mobile version with sidebar open](./src/screenshot-mobile-sidebar.png)
-![Mobile version with posts from Tekken subreddit rendered](./src/screenshot-mobile-tekken-example.png)
+![Mobile version with home page](./readme/screenshot-mobile.png)
+![Mobile version with sidebar open](./readme/screenshot-mobile-sidebar.png)
+![Mobile version with posts from Tekken subreddit rendered](./readme/screenshot-mobile-tekken-example.png)
 
 ## Future work
 The app is currently experiencing a few bugs that I would like to fix, which can be examined in detail by viewing the project's [Issues](https://github.com/DavyK17/fgc-reddit/issues).
