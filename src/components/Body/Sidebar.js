@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import $ from "jquery";
 
@@ -6,6 +6,7 @@ import { selectAuthState } from "../../features/User/userSlice";
 import { selectActive, setActive } from "../../features/Subreddits/subredditsSlice";
 import SubredditList from "../../features/Subreddits/SubredditList";
 import { selectFilter, setFilter, setSearchTerm } from "../../features/Posts/postsSlice";
+import Search from '../../features/Search/Search';
 
 const Sidebar = (props) => {
     const dispatch = useDispatch();
@@ -28,6 +29,12 @@ const Sidebar = (props) => {
         $(".sidebar").animate({
             right: `-100%`,
         }, 500);
+    };
+
+    const onSearchSubmit = (e) => {
+      e.preventDefault();
+      dispatch(setSearchTerm(e.target.previousElementSibling.value));
+      closeSidebar();
     };
 
     const sidebarClose = () => {
@@ -64,10 +71,7 @@ const Sidebar = (props) => {
                         {sidebarClose()}
                     </div>
                     <div className="search mobile">
-                        <form>
-                            <input type="search" />
-                            <button type="submit">Search</button>
-                        </form>
+                        <Search onSearchSubmit={onSearchSubmit} />
                     </div>
                     <SubredditList handleActive={handleActive} handleFilter={handleFilter} />
                 </div>
