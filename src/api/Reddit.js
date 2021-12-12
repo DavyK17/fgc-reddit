@@ -168,7 +168,7 @@ const Reddit = {
         const jsonResponse = await response.json();
         const fetched = jsonResponse.data.children.map((e) => e.data);
         return fetched.filter(
-          (el) => !el.is_gallery && el.post_hint !== 'link' && !checkNested(el, 'secure_media_embed', 'content')
+          (el) => !el.is_gallery && (el.post_hint !== 'link' && (el.domain.includes("self") || el.domain.includes("redd.it"))) && !checkNested(el, 'secure_media_embed', 'content')
         );
       }
     } catch (error) {
