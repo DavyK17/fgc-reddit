@@ -15,6 +15,9 @@ import { fetchSubs } from "./features/Subreddits/subredditsSlice";
 
 function App() {
     const dispatch = useDispatch();
+        
+    const stateMatch = window.location.href.match(/state=([^&]*)/);
+    const codeMatch = window.location.href.match(/code=([^&]*)/);
     
     const handleLogout = async () => {
         await Reddit.logoutUser();
@@ -22,10 +25,7 @@ function App() {
         const logoutUser = { type: "logoutUser" };
         dispatch(logoutUser);
         
-        const stateMatch = window.location.href.match(/state=([^&]*)/);
-        const codeMatch = window.location.href.match(/code=([^&]*)/);
-        
-        if ((stateMatch && codeMatch)) {
+        if (stateMatch && codeMatch) {
             let url = removeURLParameter(window.location.href, "state");
             url = removeURLParameter(url, "code");
 
@@ -38,9 +38,6 @@ function App() {
     };
 
     useEffect(() => {
-        const stateMatch = window.location.href.match(/state=([^&]*)/);
-        const codeMatch = window.location.href.match(/code=([^&]*)/);
-    
         if ((stateMatch && codeMatch) || localStorage.getItem("access_token")) {
             dispatch(fetchUser())
             .unwrap()
