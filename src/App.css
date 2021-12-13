@@ -665,7 +665,7 @@ header {
 
 @media (max-width: 991px) {
     .reddit .sidebar nav {
-        height: fit-content;
+        height: 100%;
         width: inherit;
         background-color: #ccc;
         border-radius: unset;
