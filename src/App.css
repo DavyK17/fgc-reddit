@@ -636,11 +636,15 @@ header {
     margin-bottom: 1.5rem;
 }
 
+.reddit .sidebar-close,
 .reddit .sidebar-close-container {
     display: none;
 }
 
 @media (max-width: 991px) {
+    .reddit .sidebar-close {
+        display: block;
+    }
     .reddit .sidebar-close-container {
         display: flex;
         width: 75px;
