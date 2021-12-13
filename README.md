@@ -39,6 +39,7 @@ This is a portfolio project I did as part of my full stack engineer course on [C
 - [jQuery](https://jquery.com/) - JavaScript DOM manipulation library
 - [React Loading Skeleton](https://www.npmjs.com/package/react-loading-skeleton) - Animated loading skeleton tool
 - [Moment.js](https://momentjs.com/) - JavaScript time manipulation library
+- [React HLS Player](https://www.npmjs.com/package/react-hls-player) - HLS live stream player
 
 ## Features
 FGC Reddit is a single page app (SPA) with a simple design that is accessible from desktop, tablet and mobile devices with all modern browsers, with Lighthouse scores of 98 for performance, 100 for accessibility, 93 for best practices, and 100 for SEO (full report can be viewed by [clicking here](./readme/lighthouse.pdf)).
