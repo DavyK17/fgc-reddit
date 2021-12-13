@@ -154,11 +154,9 @@ const Post = props => {
                 return (
                     <div className="post-image-container" id={`media-${props.id}`}>
                         <ReactHlsPlayer
-                            className="post-image"
                             src={`${props.secure_media.reddit_video.hls_url}`}
                             autoPlay={false}
                             controls={true}
-                            width="100%"
                         />
                     </div>
                 )
@@ -166,7 +164,7 @@ const Post = props => {
 
             return (
                 <div className="post-image-container" id={`media-${props.id}`}>
-                    <img src={`${props.url || props.url_overridden_by_dest}`} className="post-image" alt={`${props.title}`} />
+                    <img src={`${props.url || props.url_overridden_by_dest}`} alt={`${props.title}`} />
                 </div>
             )
         }
