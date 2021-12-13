@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import ReactHlsPlayer from "react-hls-player/dist";
 import $ from "jquery";
 
 import Reddit from "../../api/Reddit";
@@ -152,16 +153,18 @@ const Post = props => {
             if (props.url.match(/v\.redd\.it/)) {
                 return (
                     <div className="post-image-container" id={`media-${props.id}`}>
-                        <video className="post-image" controls>
-                            <source src={`${props.secure_media.reddit_video.fallback_url}`} type="video/mp4" />
-                        </video>
+                        <ReactHlsPlayer
+                            src={`${props.secure_media.reddit_video.hls_url}`}
+                            autoPlay={false}
+                            controls={true}
+                        />
                     </div>
                 )
             }
 
             return (
                 <div className="post-image-container" id={`media-${props.id}`}>
-                    <img src={`${props.url || props.url_overridden_by_dest}`} className="post-image" alt={`${props.title}`} />
+                    <img src={`${props.url || props.url_overridden_by_dest}`} alt={`${props.title}`} />
                 </div>
             )
         }

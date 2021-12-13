@@ -517,6 +517,10 @@ header {
     height: auto;
 }
 
+.post-image-container video {
+    width: 100%;
+}
+
 @media (min-width: 992px) {
     .post-image-container img,
     .post-image-container video {
@@ -529,10 +533,6 @@ header {
     .post-image-container video {
         max-height: 500px;
     }
-}
-
-.post-image {
-    height: 100%;
 }
 
 .post-text-container {
