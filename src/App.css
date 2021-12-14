@@ -722,7 +722,7 @@ header {
     .subreddit-list {
         margin-top: 1.5rem;
         min-height: 30px;
-        max-height: 400px;
+        max-height: 500px;
         overflow-y: auto;
     }
     .subreddit-list .placeholder {
