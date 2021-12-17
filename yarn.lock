@@ -9307,10 +9307,10 @@ react-error-overlay@^6.0.9:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
   integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
 
-react-hls-player@^3.0.7:
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/react-hls-player/-/react-hls-player-3.0.7.tgz#1f66f55c2a5dc1fa6441ddc47b7c892079a276cf"
-  integrity sha512-i5QWNyLmaUhV/mgnpljRJT0CBfJnylClV/bne8aiXO3ZqU0+D3U/jtTDwdXM4i5qHhyFy9lemyZ179IgadKd0Q==
+react-hls-player@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-hls-player/-/react-hls-player-2.0.0.tgz#89b758467530352fa5036a27984fb1e552d345d4"
+  integrity sha512-dQejJJx4iF78+SYvD7h/kd6yRbwlpDfjU9MyT7D2u+8SGz1fHh3Yr3srtqQHe4xYwLHgQK3yqmTYE49PUgn51g==
   dependencies:
     hls.js "^0.14.17"
 
