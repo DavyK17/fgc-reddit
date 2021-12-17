@@ -14,8 +14,17 @@ const redirectURI = process.env.NODE_ENV === 'production' ? 'https://fgc-reddit.
 const authDuration = 'permanent';
 
 const Reddit = {
-  // added
+  isTokenExpired: () => {
+    // check if token is expired and if so refresh
+    const expirationTime = localStorage.getItem('expiration_time');
+    const now = Date.now();
+    if(expirationTime >= now) return false;
+    return true;
+  },
   getAccessToken: async () => {
+    if(Reddit.isTokenExpired === true) {
+      return Reddit.refreshAccessToken();
+    }
     if (localStorage.getItem('access_token')) return localStorage.getItem('access_token');
 
     const stateMatch = window.location.href.match(/state=([^&]*)/);
@@ -49,6 +58,9 @@ const Reddit = {
           localStorage.setItem('refresh_token', jsonResponse.refresh_token);
 
           expiryTime = Number(jsonResponse.expires_in);
+
+          // set the token expiration time
+          localStorage.setItem('expiration_time', Date.now() + expiryTime * 1000);
 
           window.setTimeout(() => Reddit.refreshAccessToken(), expiryTime * 1000);
 
@@ -88,6 +100,11 @@ const Reddit = {
         localStorage.setItem('access_token', jsonResponse.access_token);
 
         expiryTime = Number(jsonResponse.expires_in);
+
+        localStorage.setItem('expiration_time', expiryTime * 1000);
+
+        // this might work and maybe what you were missing
+        // setTimeout(() => Reddit.getAccessToken(), expiryTime * 1000)
 
         return localStorage.getItem('access_token');
       }
