@@ -14,6 +14,7 @@ const redirectURI = process.env.NODE_ENV === 'production' ? 'https://fgc-reddit.
 const authDuration = 'permanent';
 
 const Reddit = {
+  // added
   getAccessToken: async () => {
     if (localStorage.getItem('access_token')) return localStorage.getItem('access_token');
 
