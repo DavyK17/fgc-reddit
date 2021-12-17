@@ -130,6 +130,7 @@ const Reddit = {
       // clear all the tokens in local storage
       localStorage.removeItem('access_token');
       localStorage.removeItem('refresh_token');
+      localStorage.removeItem('expires_in');
       return;
     } catch (error) {
       console.log(error);
