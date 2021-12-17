@@ -3,7 +3,6 @@ import checkNested from '../util/checkNested';
 
 let state = makeID(7);
 let code;
-let expiryTime;
 
 const clientID = process.env.NODE_ENV === 'production' ? '6GyLIZKwo2Oo3s1FgtecFw' : 'UTzjq5fgYGrdKJogTOjwKw';
 const clientSecret = process.env.NODE_ENV === 'production' ? 'S0JhJxxfKogUviVhk0QAg5F7iQvg3w' : 'kepD_jqAWpk3O4IW2FPYiXUimTto7w';
@@ -16,15 +15,13 @@ const authDuration = 'permanent';
 const Reddit = {
   isTokenExpired: () => {
     // check if token is expired and if so refresh
-    const expirationTime = localStorage.getItem('expiration_time');
+    const expiresIn = localStorage.getItem('expires_in');
     const now = Date.now();
-    if(expirationTime >= now) return false;
+    if (expiresIn >= now) return false;
     return true;
   },
   getAccessToken: async () => {
-    if(Reddit.isTokenExpired === true) {
-      return Reddit.refreshAccessToken();
-    }
+    if (Reddit.isTokenExpired()) return Reddit.refreshAccessToken();
     if (localStorage.getItem('access_token')) return localStorage.getItem('access_token');
 
     const stateMatch = window.location.href.match(/state=([^&]*)/);
@@ -57,12 +54,8 @@ const Reddit = {
           localStorage.setItem('access_token', jsonResponse.access_token);
           localStorage.setItem('refresh_token', jsonResponse.refresh_token);
 
-          expiryTime = Number(jsonResponse.expires_in);
-
           // set the token expiration time
-          localStorage.setItem('expiration_time', Date.now() + expiryTime * 1000);
-
-          window.setTimeout(() => Reddit.refreshAccessToken(), expiryTime * 1000);
+          localStorage.setItem('expires_in', Date.now() + (Number(jsonResponse.expires_in) * 1000));
 
           return localStorage.getItem('access_token');
         }
@@ -98,13 +91,7 @@ const Reddit = {
       if (response.ok) {
         const jsonResponse = await response.json();
         localStorage.setItem('access_token', jsonResponse.access_token);
-
-        expiryTime = Number(jsonResponse.expires_in);
-
-        localStorage.setItem('expiration_time', expiryTime * 1000);
-
-        // this might work and maybe what you were missing
-        // setTimeout(() => Reddit.getAccessToken(), expiryTime * 1000)
+        localStorage.setItem('expires_in', Number(jsonResponse.expires_in) * 1000);
 
         return localStorage.getItem('access_token');
       }
