@@ -94,7 +94,7 @@ const Reddit = {
       if (response.ok) {
         const jsonResponse = await response.json();
         localStorage.setItem('access_token', jsonResponse.access_token);
-        localStorage.setItem('expires_in', Number(jsonResponse.expires_in) * 1000);
+        localStorage.setItem('expires_in', Date.now() + (Number(jsonResponse.expires_in) * 1000));
 
         return localStorage.getItem('access_token');
       }
