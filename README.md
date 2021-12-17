@@ -82,7 +82,7 @@ As you can tell from my initial wireframe, I was a bit over-ambitious with my pr
 ![Mobile version, from left to right: Home page, with sidebar open, and with posts rendered from Tekken subreddit](./readme/screenshot-mobile.png)
 
 ## Future work
-The app is currently experiencing a few bugs that I would like to fix, which can be examined in detail by viewing the project's [Issues](https://github.com/DavyK17/fgc-reddit/issues).
+None planned at the moment, but additional features could potentially be added in the future.
 
 ## Author
 - GitHub: [@DavyK17](https://github.com/DavyK17)
