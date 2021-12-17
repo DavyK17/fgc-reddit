@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import ReactHlsPlayer from "react-hls-player/dist";
+import ReactHlsPlayer from "react-hls-player";
 import $ from "jquery";
 
 import Reddit from "../../api/Reddit";
