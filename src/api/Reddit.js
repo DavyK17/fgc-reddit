@@ -14,6 +14,9 @@ const authDuration = 'permanent';
 
 const Reddit = {
   isTokenExpired: () => {
+    // If no token, return false
+    if (!localStorage.getItem('access_token')) return false;
+    
     // check if token is expired and if so refresh
     const expiresIn = localStorage.getItem('expires_in');
     const now = Date.now();
