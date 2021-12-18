@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 
 import { store } from '../../app/store';
 import Posts from '../../features/Posts/Posts';
-import { fetchPosts, setSearchTerm } from "../../features/Posts/postsSlice";
+import { fetchPosts, setSearchTerm, setFilter } from "../../features/Posts/postsSlice";
 import { setActive } from "../../features/Subreddits/subredditsSlice";
 
 export const postsMock = [
@@ -195,7 +195,7 @@ export const postsMock = [
         secure_media: null,
         secure_media_embed: {},
         score: 22,
-        created_utc: 1638270016,
+        created_utc: 1638170016,
         selftext_html: '&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Welcome to the &lt;a href="/r/Tekken/about/wiki/tekken-dojo"&gt;Tekken Dojo&lt;/a&gt;, a place for everyone to learn and get better at the wonderful game that is Tekken.&lt;/p&gt;\n\n&lt;h2&gt;Beginners should first familiarize themselves with the &lt;a href="/r/Tekken/wiki/beginner-resources"&gt;Beginner Resources&lt;/a&gt; to avoid asking questions already answered there.&lt;/h2&gt;\n\n&lt;p&gt;Post your question here and get an answer. Helpful contributors will be awarded &lt;a href="https://www.reddit.com/r/Tekken/wiki/tekken-dojo/dojo-leaderboard"&gt;Dojo Points&lt;/a&gt;, which can make them Dojo Master at the end of the month (awards a unique flair). Please report unhelpful contributors to ensure the dojo remains a place dedicated to improvement.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;',
         id: 'r5kux3',
         author: 'AutoModerator',
@@ -428,6 +428,15 @@ describe("when fetch is fulfilled", () => {
         expect(screen.getByText("Tekken Dojo 2: Ask Questions Here")).toBeInTheDocument(); 
     });
 
+    test("renders lists of posts by filter when filter is set", () => {
+        const setMock = () => {
+            return { type: setFilter.type, payload: "new" };
+        }
+        store.dispatch(setMock());
+
+        expect(screen.getByText("Tekken Dojo: Ask Questions Here")).toBeInTheDocument();
+    }); 
+
     test("uses titles to show filtered posts when search term is set", () => {
         const setMock = () => {
             return { type: setSearchTerm.type, payload: "Tekken Dojo 2" };
@@ -435,6 +444,11 @@ describe("when fetch is fulfilled", () => {
         store.dispatch(setMock());
 
         expect(screen.getByText("Tekken Dojo 2: Ask Questions Here")).toBeInTheDocument(); 
+    });
+
+    test("renders placeholder text when logout button is clicked", () => {
+        store.dispatch({ type: "logoutUser" });
+        expect(screen.getByText("Select a subreddit to view posts.")).toBeInTheDocument();
     });
 });
 
