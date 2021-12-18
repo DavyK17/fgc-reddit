@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 
 import { store } from '../../app/store';
 import SubredditList from '../../features/Subreddits/SubredditList';
-import { fetchSubs } from "../../features/Subreddits/subredditsSlice";
+import { fetchSubs, setActive } from "../../features/Subreddits/subredditsSlice";
 
 const subsMock = [
     {
@@ -50,19 +50,28 @@ test("renders loading skeleton while fetch is pending", () => {
     expect(screen.getByTestId("subreddit-list-loading")).toBeInTheDocument();
 });
 
-test("renders list of subreddits when fetch is fulfilled", () => {
-    render(
-        <Provider store={store}>
-            <SubredditList />
-        </Provider>
-    );
-    const fetchMock = () => {
-        return { type: fetchSubs.fulfilled.type, payload: subsMock }
-    }
-    store.dispatch(fetchMock());
+describe("when fetch is fulfilled", () => {
+    beforeEach(() => {
+        render(
+            <Provider store={store}>
+                <SubredditList />
+            </Provider>
+        );
+        const fetchMock = () => {
+            return { type: fetchSubs.fulfilled.type, payload: subsMock }
+        }
+        store.dispatch(fetchMock());
+    });
 
-    expect(screen.getByText("Blazblue")).toBeInTheDocument();
-    expect(screen.getByText("Brawlhalla")).toBeInTheDocument(); 
+    test("renders list of subreddits", () => {
+        expect(screen.getByText("Blazblue")).toBeInTheDocument();
+        expect(screen.getByText("Brawlhalla")).toBeInTheDocument(); 
+    });
+
+    test("renders placeholder text when logout button is clicked", () => {
+        store.dispatch({ type: "logoutUser" });
+        expect(screen.getByText("Link with Reddit to view list")).toBeInTheDocument();
+    });
 });
 
 test("renders error text when fetch is rejected", () => {
@@ -79,19 +88,40 @@ test("renders error text when fetch is rejected", () => {
     expect(screen.getByText("An error has occurred. Kindly try again.")).toBeInTheDocument();
 });
 
-test("calls handleActive() when subreddit button is clicked", () => {
+describe("when subreddit button is clicked", () => {
     const handleMock = jest.fn();
 
-    render(
-        <Provider store={store}>
-            <SubredditList handleActive={handleMock} />
-        </Provider>
-    );
-    const fetchMock = () => {
-        return { type: fetchSubs.fulfilled.type, payload: subsMock }
-    }
-    store.dispatch(fetchMock());
+    beforeEach(() => {
+        render(
+            <Provider store={store}>
+                <SubredditList handleActive={handleMock} />
+            </Provider>
+        );
+        const fetchMock = () => {
+            return { type: fetchSubs.fulfilled.type, payload: subsMock }
+        }
+        store.dispatch(fetchMock());
+    
+        userEvent.click(screen.getByText("Blazblue"));
+        const activeMock = {
+            display_name: 'Blazblue',
+            title: 'Blazblue',
+        };
 
-    userEvent.click(screen.getByText("Blazblue"));
-    expect(handleMock).toBeCalled();
+        const setMock = () => {
+            return { type: setActive.type, payload: activeMock };
+        }
+        store.dispatch(setMock());
+    });
+
+    test("calls handleActive()", () => {
+        expect(handleMock).toBeCalled();
+    });
+
+    test("renders listing filters", () => {
+        expect(screen.getByText("Hot")).toBeInTheDocument();
+        expect(screen.getByText("New")).toBeInTheDocument();
+        expect(screen.getByText("Top")).toBeInTheDocument();
+        expect(screen.getByText("Rising")).toBeInTheDocument();
+    });
 });

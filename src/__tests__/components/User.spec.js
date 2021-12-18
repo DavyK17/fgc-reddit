@@ -44,18 +44,27 @@ test("displays SVG spinner while authentication is pending", () => {
     expect(screen.getByTestId("loading")).toBeInTheDocument(); 
 });
 
-test("displays user's Reddit username when authentication is fulfilled", () => {
-    render(
-        <Provider store={store}>
-            <User />
-        </Provider>
-    );
-    const authMock = () => {
-        return { type: fetchUser.fulfilled.type, payload: "User" }
-    }
-    store.dispatch(authMock());
+describe("when authentication is fulfilled", () => {
+    beforeEach(() => {
+        render(
+            <Provider store={store}>
+                <User />
+            </Provider>
+        );
+        const authMock = () => {
+            return { type: fetchUser.fulfilled.type, payload: "User" }
+        }
+        store.dispatch(authMock());
+    });
 
-    expect(screen.getByText("User")).toBeInTheDocument(); 
+    test("displays user's Reddit username", () => {
+        expect(screen.getByText("User")).toBeInTheDocument(); 
+    });
+
+    test("renders placeholder text when logout button is clicked", () => {
+        store.dispatch({ type: "logoutUser" });
+        expect(screen.getByText("Link with Reddit")).toBeInTheDocument();
+    });
 });
 
 test("renders Reddit authentication link when authentication is rejected", () => {
