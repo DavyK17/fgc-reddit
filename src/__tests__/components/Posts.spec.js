@@ -4,7 +4,8 @@ import { render, screen } from '@testing-library/react';
 
 import { store } from '../../app/store';
 import Posts from '../../features/Posts/Posts';
-import { fetchPosts } from "../../features/Posts/postsSlice";
+import { fetchPosts, setSearchTerm } from "../../features/Posts/postsSlice";
+import { setActive } from "../../features/Subreddits/subredditsSlice";
 
 export const postsMock = [
     {
@@ -369,6 +370,11 @@ export const postsMock = [
     },
 ];
 
+const activeMock = {
+    display_name: 'Tekken',
+    title: '/r/Tekken: All things Tekken',
+};
+
 test("renders placeholder text by default", () => {
     render(
         <Provider store={store}>
@@ -395,19 +401,41 @@ test("renders loading skeleton while fetch is pending", () => {
     expect(screen.getByTestId("comment-loading")).toBeInTheDocument();
 });
 
-test("renders list of posts when fetch is fulfilled", () => {
-    render(
-        <Provider store={store}>
-            <Posts />
-        </Provider>
-    );
-    const fetchMock = () => {
-        return { type: fetchPosts.fulfilled.type, payload: postsMock }
-    }
-    store.dispatch(fetchMock());
+describe("when fetch is fulfilled", () => {
+    beforeEach(() => {
+        render(
+            <Provider store={store}>
+                <Posts />
+            </Provider>
+        );
+        const fetchMock = () => {
+            return { type: fetchPosts.fulfilled.type, payload: postsMock }
+        }
+        store.dispatch(fetchMock());
+    });
 
-    expect(screen.getByText("Tekken Dojo: Ask Questions Here")).toBeInTheDocument();
-    expect(screen.getByText("Tekken Dojo 2: Ask Questions Here")).toBeInTheDocument(); 
+    test("shows subreddit title when subreddit is selected", () => {
+        const setMock = () => {
+            return { type: setActive.type, payload: activeMock };
+        }
+        store.dispatch(setMock());
+    
+        expect(screen.getByText("/r/Tekken: All things Tekken")).toBeInTheDocument();
+    });
+
+    test("renders list of posts", () => {
+        expect(screen.getByText("Tekken Dojo: Ask Questions Here")).toBeInTheDocument();
+        expect(screen.getByText("Tekken Dojo 2: Ask Questions Here")).toBeInTheDocument(); 
+    });
+
+    test("uses titles to show filtered posts when search term is set", () => {
+        const setMock = () => {
+            return { type: setSearchTerm.type, payload: "Tekken Dojo 2" };
+        }
+        store.dispatch(setMock());
+
+        expect(screen.getByText("Tekken Dojo 2: Ask Questions Here")).toBeInTheDocument(); 
+    });
 });
 
 test("renders error text when fetch is rejected", () => {
@@ -421,5 +449,5 @@ test("renders error text when fetch is rejected", () => {
     }
     store.dispatch(fetchMock());
 
-    expect(screen.getByText("An error has occurred. Kindly try again.")).toBeInTheDocument();
+    expect(screen.getByText("An error has occurred. Kindly try again.")).toBeInTheDocument(); 
 });
