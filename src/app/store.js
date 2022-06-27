@@ -10,11 +10,7 @@ export const appReducer = combineReducers({
 });
 
 export const rootReducer = (state, action) => {
-    if (action.type === "logoutUser") {
-        return appReducer(undefined, action);
-    }
-
-    return appReducer(state, action);
+    return action.type === "logoutUser" ? appReducer(undefined, action) : appReducer(state, action);
 };
 
 export const store = configureStore({
