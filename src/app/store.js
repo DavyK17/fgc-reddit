@@ -8,10 +8,7 @@ export const appReducer = combineReducers({
     subreddits: subredditsReducer,
     posts: postsReducer,
 });
-
-export const rootReducer = (state, action) => {
-    return action.type === "logoutUser" ? appReducer(undefined, action) : appReducer(state, action);
-};
+export const rootReducer = (state, action) => action.type === "logoutUser" ? appReducer(undefined, action) : appReducer(state, action);
 
 export const store = configureStore({
     reducer: rootReducer
